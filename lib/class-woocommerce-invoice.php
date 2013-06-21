@@ -116,6 +116,9 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 
 		$fill_class_data['lines'] = array( );
 		foreach ( $order_items as $item_id => $item ) {
+			
+			$_product = get_product( $item_id );
+			
 			$article_information = get_post_meta( $item_id, '_twinfield_article', true );
 
 			// Find and article and subarticle id if set
@@ -126,7 +129,8 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			$fill_class_data['lines'][] = array(
 				'article'	 => $article_id,
 				'subarticle' => $subarticle_id,
-				'quantity'	 => $item['quantity']
+				'quantity'	 => $_product->get_stock_quantity(),
+				'units' => $_product->get_price()
 			);
 		}
 

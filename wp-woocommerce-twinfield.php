@@ -33,6 +33,11 @@ if ( ! class_exists( 'Woocommerce_Twinfield' ) ) :
 			add_post_type_support( 'product', 'twinfield_article' );
 
 			add_action( 'wp_twinfield_formbuilder_load_forms', array( $this, 'load_forms' ) );
+			
+			add_action( 'admin_init', array( $this, 'admin_init' ) );
+			
+			include 'lib/class-woocommerce-invoice.php';
+			include 'lib/class-woocommerce-invoice-sync.php';
 		}
 
 		/**
@@ -42,8 +47,6 @@ if ( ! class_exists( 'Woocommerce_Twinfield' ) ) :
 		 * Sets the view for that form so it works in the formbuilder ui
 		 */
 		public function load_forms() {
-			include( 'lib/class-woocommerce-invoice.php' );
-
 			// Makes an instance of WooCommerce Invoice
 			$woocommerce_invoice = new Woocommerce_Invoice();
 			$woocommerce_invoice->set_view( dirname( __FILE__ ) . '/views/woocommerce_invoice_form.php' );
@@ -51,7 +54,19 @@ if ( ! class_exists( 'Woocommerce_Twinfield' ) ) :
 			// Registers the woocommerce invoice form
 			\Pronamic\WP\Twinfield\FormBuilder\FormBuilderFactory::register_form( 'Woocommerce Invoice', $woocommerce_invoice );
 		}
+		
+		public function admin_init() {
+			include 'lib/class-woocommerce-invoice-meta-box.php';
+			$invoice_meta_box = new Woocommerce_Invoice_Meta_Box();
+		}
 
+		public function plugin_folder() {
+			return dirname( __FILE__ );
+		}
+		
+		public function plugin_file() {
+			return __FILE__;
+		}
 	}
 
 endif;

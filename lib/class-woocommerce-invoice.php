@@ -80,9 +80,8 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	/**
 	 * Sets some extra variables for the FormBuilder UI.
 	 * 
-	 * Currently sets a key of 'products' that hold all
-	 * the products in WooCommerce.  Allows the article/subarticle
-	 * inputs to be dropdowns.
+	 * Currently sets a key of 'orders' that hold all
+	 * the orders in WooCommerce. 
 	 * 
 	 * @overide
 	 * 
@@ -92,24 +91,24 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	public function prepare_extra_variables() {
 		parent::prepare_extra_variables();
 
-		$all_products = $this->get_all_products();
-		$this->set_extra_variables( 'products', $all_products );
+		$all_orders = $this->get_all_orders();
+		$this->set_extra_variables( 'orders', $all_orders );
 	}
 
 	/**
 	 * Called from inside prepare_extra_variables that gives back the 
-	 * array of all products
+	 * array of all orders
 	 * 
 	 * @access public
 	 * @return array
 	 */
-	public function get_all_products() {
-		$products_query = new WP_Query( array(
-			'post_type'		 => 'product',
+	public function get_all_orders() {
+		$orders_query = new WP_Query( array(
+			'post_type' => 'shop_order',
 			'posts_per_page' => -1
-			) );
-
-		return $products_query->posts;
+		) );
+		
+		return $orders_query->posts;
 	}
 	
 	/**
@@ -132,10 +131,11 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
-		$fill_class_data['customerID'] = $this->customer_id;
-		$fill_class_data['invoiceType'] = $this->invoice_type;
+		$fill_class_data['customerID']		 = $this->customer_id;
+		$fill_class_data['invoiceType']		 = $this->invoice_type;
+		$fill_class_data['invoiceNumber']	 = '';
 		
-		if ( $invoice_number = $this->check_for_twinfield_invoice_number() ) {
+		if ( $invoice_number = self::check_for_twinfield_invoice_number( $this->order->id ) ) {
 			$fill_class_data['invoiceNumber'] = $invoice_number;
 		}
 		
@@ -203,16 +203,16 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @access public
 	 * @return int/false
 	 */
-	public function check_for_twinfield_invoice_number() {
-		return get_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_number', true );
+	public static function check_for_twinfield_invoice_number( $order_id ) {
+		return get_post_meta( $order_id, '_woocommerce_twinfield_invoice_number', true );
 	}
 	
 	/**
 	 * Returns the recorded customer id if one exists or false if not.
 	 * @return int|false
 	 */
-	public function check_for_twinfield_customer_id() {
-		return get_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_customer_id', true );
+	public static function check_for_twinfield_customer_id( $order_id ) {
+		return get_post_meta( $order_id, '_woocommerce_twinfield_invoice_customer_id', true );
 	}
 
 }

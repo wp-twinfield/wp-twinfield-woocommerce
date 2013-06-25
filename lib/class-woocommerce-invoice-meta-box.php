@@ -32,12 +32,8 @@ class Woocommerce_Invoice_Meta_Box {
 			'spinner' => admin_url( 'images/wpspin_light.gif' )
 		) );
 		
-		$wc_order = new WC_Order();
-		$wc_order->populate( $post );
-		
-		$invoice = new \Woocommerce_Invoice( $wc_order );
-		$invoice_number = $invoice->check_for_twinfield_invoice_number();
-		$customer_id = $invoice->check_for_twinfield_customer_id();
+		$invoice_number = Woocommerce_Invoice::check_for_twinfield_invoice_number( $post->ID );
+		$customer_id = Woocommerce_Invoice::check_for_twinfield_customer_id( $post->ID );
 		
 		$view = new \ZFramework\Base\View( $woocommerce_twinfield->plugin_folder() . '/views' );
 		$view

@@ -49,8 +49,8 @@ var Woocommerce_Twinfield_Sync = {
 	}
 
 	, setSuccessMessage: function(successMessage) {
-		var successMessageDom = jQuery('<div></div>');
-		successMessageDom.html(successMessage);
+		var successMessageDom = jQuery('<div class="updated"></div>');
+		successMessageDom.html(jQuery('<p></p>').html(successMessage));
 
 		Woocommerce_Twinfield_Sync.config.dom.messageHolder.append(successMessageDom);
 	}

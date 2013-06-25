@@ -24,6 +24,22 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	private $order;
 	
 	/**
+	 * Holds the customers ID. Has to be set
+	 * with the setter
+	 * 
+	 * @var int
+	 */
+	private $customer_id;
+	
+	/**
+	 * Holds the orders invoice type. For now
+	 * it defaults to `FACTUUR` you can overide
+	 * with the setter.
+	 * @var string
+	 */
+	private $invoice_type = 'FACTUUR';
+	
+	/**
 	 * Holds the WC Order in the class for use when
 	 * fill_class is called.
 	 * 
@@ -34,8 +50,10 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @param WC_Order $order OPTIONAL
 	 * @return void
 	 */
-	public function __construct( WC_Order $order = null ) {
+	public function __construct( WC_Order $order = null, $customer_id = null, $invoice_type = 'FACTUUR' ) {
 		$this->order = $order;
+		$this->customer_id = $customer_id;
+		$this->invoice_type = $invoice_type;
 	}
 
 	/**
@@ -108,18 +126,29 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @param WC_Order $order
 	 * @return array
 	 */
-	public function prepare_invoice( WC_Order $order ) {
+	public function prepare_invoice( WC_Order $order = null ) {
+		if ( $order )
+			$this->order = $order;
+		
 		// Array for holding data for fill_class() method
-		$fill_class_data = array( );
-
-		$order_items = $order->get_items();
-
-		$fill_class_data['lines'] = array( );
-		foreach ( $order_items as $item_id => $item ) {
+		$fill_class_data = array();
+		$fill_class_data['customerID'] = $this->customer_id;
+		$fill_class_data['invoiceType'] = $this->invoice_type;
+		
+		if ( $invoice_number = $this->check_for_twinfield_invoice_number() ) {
+			$fill_class_data['invoiceNumber'] = $invoice_number;
+		}
+		
+		// Get all ordered products
+		$order_items = $this->order->get_items();
+		
+		// Prepare the lines for the form
+		$fill_class_data['lines'] = array();
+		
+		// Go through all the products and add the items order information
+		foreach ( $order_items as $item ) {
 			
-			$_product = get_product( $item_id );
-			
-			$article_information = get_post_meta( $item_id, '_twinfield_article', true );
+			$article_information = get_post_meta( $item['product_id'], '_twinfield_article', true );
 
 			// Find and article and subarticle id if set
 			$article_id		 = ( isset( $article_information['article_id'] ) ) ? $article_information['article_id'] : '';
@@ -127,14 +156,63 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 
 			// Data for the lines
 			$fill_class_data['lines'][] = array(
+				'active' => true,
 				'article'	 => $article_id,
 				'subarticle' => $subarticle_id,
-				'quantity'	 => $_product->get_stock_quantity(),
-				'units' => $_product->get_price()
+				'quantity' => $item['qty'],
+				'unitspriceexcl' => $item['line_total'],
+				'vatcode' => $item['tax_class']
 			);
 		}
 
 		return $fill_class_data;
+	}
+	
+	/**
+	 * Should be called after a true response from the Invoice::submit() method
+	 * call. It will add the twinfield_invoice_number to the post meta of the
+	 * order.  It will prevent future calls to the sync button from adding new
+	 * orders when it should update existing.
+	 * 
+	 * @access public
+	 * @return int|bool
+	 */
+	public function successful() {
+		// Map the response to an Invoice object
+		$invoice = Pronamic\Twinfield\Invoice\Mapper\InvoiceMapper::map( $this->get_response() );
+		
+		// Check the response is an invoice object
+		if ( $invoice instanceof \Pronamic\Twinfield\Invoice\Invoice ) {
+			// Get the responded invoice number
+			$invoice_number = $invoice->getInvoiceNumber();
+			$customer_id = $invoice->getCustomer()->getID();
+			
+			// Add to the post meta, and return the invoice number
+			update_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_number', $invoice_number );
+			update_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_customer_id', $customer_id );
+			
+			return $invoice_number;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Returns the recorded invoice number if one exists or false if not.
+	 * 
+	 * @access public
+	 * @return int/false
+	 */
+	public function check_for_twinfield_invoice_number() {
+		return get_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_number', true );
+	}
+	
+	/**
+	 * Returns the recorded customer id if one exists or false if not.
+	 * @return int|false
+	 */
+	public function check_for_twinfield_customer_id() {
+		return get_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_customer_id', true );
 	}
 
 }

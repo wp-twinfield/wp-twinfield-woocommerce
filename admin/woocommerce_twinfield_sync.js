@@ -9,6 +9,8 @@ var Woocommerce_Twinfield_Sync = {
 		Woocommerce_Twinfield_Sync.config.dom.syncButton = jQuery('.WoocommerceTwinfieldSyncButton');
 		Woocommerce_Twinfield_Sync.config.dom.messageHolder = jQuery('.WoocommerceTwinfieldSyncMessageHolder');
 		Woocommerce_Twinfield_Sync.config.dom.postID = jQuery('#post_ID');
+		Woocommerce_Twinfield_Sync.config.dom.customerID = jQuery('.WoocommerceTwinfieldSyncCustomerIDInput');
+		Woocommerce_Twinfield_Sync.config.dom.spinnerHolder = jQuery('.WoocommerceTwinfieldSyncSpinnerHolder');
 		
 		Woocommerce_Twinfield_Sync.binds();
 	}
@@ -16,17 +18,28 @@ var Woocommerce_Twinfield_Sync = {
 	, binds: function() {
 		Woocommerce_Twinfield_Sync.config.dom.syncButton.click(Woocommerce_Twinfield_Sync.syncOrder);
 	}
+	
+	, spinnerImage: function() {
+		var img = new Image();
+		img.src = Woocommerce_Twinfield_Vars.spinner;
+		
+		return img;
+	}
 
 	, syncOrder: function(e) {
 		e.preventDefault();
-
+		
+		Woocommerce_Twinfield_Sync.clearMessagesHolder();
+		Woocommerce_Twinfield_Sync.config.dom.spinnerHolder.html(Woocommerce_Twinfield_Sync.spinnerImage());
+		
 		jQuery.ajax({
 			type: 'POST'
 			, url: ajaxurl
 			, dataType: 'json'
 			, data: {
 				action: 'woocommerce_twinfield_sync',
-				post_id: Woocommerce_Twinfield_Sync.config.dom.postID.val()
+				post_id: Woocommerce_Twinfield_Sync.config.dom.postID.val(),
+				customer_id: Woocommerce_Twinfield_Sync.config.dom.customerID.val()
 			}
 			, success: Woocommerce_Twinfield_Sync.syncOrderSuccess
 			, error: Woocommerce_Twinfield_Sync.syncOrderFailed
@@ -34,7 +47,9 @@ var Woocommerce_Twinfield_Sync = {
 	}
 
 	, syncOrderSuccess: function(data) {
-		console.log(data);
+		
+		Woocommerce_Twinfield_Sync.config.dom.spinnerHolder.empty();
+		
 		if (true === data.ret) {
 			Woocommerce_Twinfield_Sync.setSuccessMessage(data.msg);
 		} else {
@@ -47,11 +62,15 @@ var Woocommerce_Twinfield_Sync = {
 		console.log(two);
 		console.log(three);
 	}
+	
+	, clearMessagesHolder: function() {
+		Woocommerce_Twinfield_Sync.config.dom.messageHolder.empty();
+	}
 
 	, setSuccessMessage: function(successMessage) {
 		var successMessageDom = jQuery('<div class="updated"></div>');
 		successMessageDom.html(jQuery('<p></p>').html(successMessage));
-
+		
 		Woocommerce_Twinfield_Sync.config.dom.messageHolder.append(successMessageDom);
 	}
 
@@ -64,7 +83,7 @@ var Woocommerce_Twinfield_Sync = {
 
 			errorMessagesDom.append(errorMessageDom);
 		});
-
+		
 		Woocommerce_Twinfield_Sync.config.dom.messageHolder.append(errorMessagesDom);
 	}
 };

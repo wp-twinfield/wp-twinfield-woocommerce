@@ -139,6 +139,10 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			$fill_class_data['invoiceNumber'] = $invoice_number;
 		}
 		
+		////////
+		// Products
+		////////
+		
 		// Get all ordered products
 		$order_items = $this->order->get_items();
 		
@@ -160,10 +164,55 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 				'article'	 => $article_id,
 				'subarticle' => $subarticle_id,
 				'quantity' => $item['qty'],
-				'unitspriceexcl' => $item['line_total'],
-				'vatcode' => $item['tax_class']
+				'unitspriceexcl' => $order->get_item_total( $item, false, false ),
+				'vatcode' => $item['tax_class'],
+				'freetext1' => $order->get_line_tax( $item )
 			);
 		}
+		
+		////////
+		// Shipping
+		////////
+		
+		// Get shipping article/subarticle
+		$shipping_article_id = WoocommerceTwinfield_Integration::get_shipping_article_id( $order->shipping_method );
+		$shipping_subarticle_id = WoocommerceTwinfield_Integration::get_shipping_subarticle_id( $order->shipping_method );
+		
+		$shipping_line = array(
+			'active' => true,
+			'article' => $shipping_article_id,
+			'subarticle' => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
+			'quantity' => 1,
+			'unitspriceexcl' => $order->get_shipping_tax(),
+			'vatcode' => 'VN'
+		);
+		
+		if ( WoocommerceTwinfield_Integration::add_shipping_method_to_freetext() )
+			$shipping_line['freetext1'] = $order->get_shipping_method();
+		
+		// Shipping Fees
+		$fill_class_data['lines'][] = $shipping_line;
+		
+		///////
+		// Discounts
+		///////
+		
+		// Get discount article/subarticle
+		$discount_article_id = WoocommerceTwinfield_Integration::get_discount_article_id();
+		$discount_subarticle_id = WoocommerceTwinfield_Integration::get_discount_subarticle_id();
+		
+		$discount_line = array(
+			'active' => true,
+			//'article' => $discount_article_id,
+			//'subarticle' => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
+			'quantity' => 1,
+			'unitspriceexcl' => '0.0',
+			'vatcode' => 'VN',
+			'freetext1' => $order->get_cart_discount()
+		);
+		
+		// Discounts
+		$fill_class_data['lines'][] = $discount_line;
 
 		return $fill_class_data;
 	}

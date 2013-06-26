@@ -36,6 +36,8 @@ if ( ! class_exists( 'Woocommerce_Twinfield' ) ) :
 			
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			
+			add_action( 'wp_ajax_woocommerce_twinfield_formbuilder_load_order', array( $this, 'ajax_load_order' ) );
+			
 			include 'lib/class-woocommerce-invoice.php';
 			include 'lib/class-woocommerce-invoice-sync.php';
 		}
@@ -58,6 +60,19 @@ if ( ! class_exists( 'Woocommerce_Twinfield' ) ) :
 		public function admin_init() {
 			include 'lib/class-woocommerce-invoice-meta-box.php';
 			$invoice_meta_box = new Woocommerce_Invoice_Meta_Box();
+		}
+		
+		public function ajax_load_order() {
+			
+			if ( ! filter_has_var( INPUT_POST, 'order_id' ) )
+				exit;
+			
+			$wc_order = new WC_Order( filter_input( INPUT_POST, 'order_id', FILTER_SANITIZE_NUMBER_INT ) );
+			
+			$woocommerce_invoice = new Woocommerce_Invoice( $wc_order, Woocommerce_Invoice::check_for_twinfield_customer_id( $wc_order->id ) );
+			
+			echo json_encode( $woocommerce_invoice->prepare_invoice() );
+			exit;
 		}
 
 		public function plugin_folder() {

@@ -4,39 +4,79 @@
 		$(function(){
 
 			$('.jAddLine').click(function(e) {
+				FormBuilderUI.load();
+				FormBuilderUI.addRow();
+			});
+			
+			
+			$('.woocommerce_order_dropdown_load').click(function(e) {
 				e.preventDefault();
-
-				linesRow = jQuery('.jLinesRow');
-
-				var lastLineEntry = linesRow.children('tr').last();
-				var number = lastLineEntry.data('number');
-				var nextNumber = number + 1;
-
-				lastLineEntry.clone().appendTo('.jLinesRow').data('number', nextNumber).find('input').each( function(index) {
-					var self = $(this);
-					var currentName = self.attr('name');
-					var newName = currentName.replace(number, nextNumber, "gi");
-					self.attr('name', newName);
-					self.attr('value', '');
+				
+				var chosen_order = $('.woocommerce_order_dropdown').val();
+				
+				$.ajax({
+					 type:'POST'
+					,url:ajaxurl
+					,dataType:'json'
+					,data:{
+						 action: 'woocommerce_twinfield_formbuilder_load_order'
+						,order_id:chosen_order
+					}
+					,success: function(data) {
+						console.log(data);
+						$.each(data, function(i,value){
+							if('lines' === i) {
+								$.each(value, function(rowInt, rowValue){
+									
+									// Add new rows if above 1
+									if(rowInt>0)
+										FormBuilderUI.addRow();
+									
+									// Loop through the values
+									$.each(rowValue, function(rowValueName, rowValueValue){
+										$('input[name="lines['+(rowInt+1)+']['+rowValueName+']"]').val(rowValueValue);
+									});
+								});
+							} else {
+								$('input[name='+i+']').val(value);
+							}
+						});
+					}
+					
+					,error: function(one,two,three) {
+						console.log(one);
+						console.log(two);
+						console.log(three);
+					}
+					
 				});
+				
 			});
 		});
 
 	})(jQuery);
 </script>
-<?php
-	
-	// Generate the dropdown from all the products
-	$product_dropdown = array();
-	foreach ( $form_extra['products'] as $product ) {
-		$product_dropdown[$product->ID] = $product->post_title;
-	}
-
-?>
 <h2><?php _e( 'Invoice Form', 'twinfield' ); ?></h2>
 <form method="POST" class="input-form">
 	<?php echo $nonce; ?>
 	<table class="form-table">
+		<tr>
+			<th><?php _e( 'Load WooCommerce Order', 'woocommerce-twinfield' ); ?></th>
+			<td>
+				<select class="woocommerce_order_dropdown">
+					<?php foreach ( $form_extra['orders'] as $order ) : ?>
+						<option value="<?php echo $order->ID; ?>"><?php echo $order->post_title; ?></option>
+					<?php endforeach; ?>
+				</select>
+				<input class="button woocommerce_order_dropdown_load" type="submit" value="<?php _e( 'Load', 'woocommerce-twinfield' ); ?>"/>
+			</td>
+		</tr>
+		<tr>
+			<th><?php _e( 'Invoice Number', 'twinfield' ); ?></th>
+			<td>
+				<input type="text" name="invoiceNumber" value="<?php echo $object->getInvoiceNumber(); ?>"/>
+			</td>
+		</tr>
 		<tr>
 			<th><?php _e( 'Invoice Type', 'twinfield' ); ?></th>
 			<td>
@@ -63,21 +103,14 @@
 			<th><?php _e( 'Free Text 2', 'twinfield' ); ?></th>
 			<th><?php _e( 'Free Text 3', 'twinfield' ); ?></th>
 		</thead>
-		<tbody class="jLinesRow">
+		<tbody class="jFormBuilderUI_TableBody">
 			<?php $lines = $object->getLines(); ?>
 			<?php if ( ! empty( $lines ) ) : ?>
 				<?php $line_number = 1; ?>
 				<?php foreach ( $object->getLines() as $line ) : ?>
 					<tr data-number="<?php echo $line_number; ?>">
 						<input type="hidden" name="lines[<?php echo $line_number; ?>][active]" value="true" />
-						<td>
-							<select name="lines[<?php echo $line_number; ?>][article]">
-								<?php foreach ( $product_dropdown as $id => $product ) : ?>
-									<option value="<?php echo $id; ?>"><?php echo $product; ?></option>
-								<?php endforeach; ?>
-							</select>
-							<input type="text" name="lines[<?php echo $line_number; ?>][article]" value="<?php echo $line->getArticle(); ?>"/>
-						</td>
+						<td><input type="text" name="lines[<?php echo $line_number; ?>][article]" value="<?php echo $line->getArticle(); ?>"/></td>
 						<td><input type="text" name="lines[<?php echo $line_number; ?>][subarticle]" value="<?php echo $line->getSubArticle(); ?>"/></td>
 						<td><input type="text" name="lines[<?php echo $line_number; ?>][quantity]" value="<?php echo $line->getQuantity(); ?>"/></td>
 						<td><input type="text" name="lines[<?php echo $line_number; ?>][units]" value="<?php echo $line->getUnits(); ?>"/></td>
@@ -92,14 +125,7 @@
 			<?php else: ?>
 				<tr data-number="1">
 					<input type="hidden" name="lines[1][active]" value="true" />
-					<td>
-						<select name="lines[1][article]">
-							<?php foreach ( $product_dropdown as $id => $product ) : ?>
-								<option value="<?php echo $id; ?>"><?php echo $product; ?></option>
-							<?php endforeach; ?>
-						</select>
-						<input type="text" name="lines[1][article]" value=""/>
-					</td>
+					<td><input type="text" name="lines[1][article]" value=""/></td>
 					<td><input type="text" name="lines[1][subarticle]" value=""/></td>
 					<td><input type="text" name="lines[1][quantity]" value=""/></td>
 					<td><input type="text" name="lines[1][units]" value=""/></td>

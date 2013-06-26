@@ -203,8 +203,8 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		
 		$discount_line = array(
 			'active' => true,
-			//'article' => $discount_article_id,
-			//'subarticle' => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
+			'article' => $discount_article_id,
+			'subarticle' => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
 			'quantity' => 1,
 			'unitspriceexcl' => '0.0',
 			'vatcode' => 'VN',

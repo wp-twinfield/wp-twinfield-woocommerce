@@ -139,12 +139,23 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			$fill_class_data['invoiceNumber'] = $invoice_number;
 		}
 		
+		/////////
+		// Header
+		/////////
+		
+		$explanation_text  = __( 'Invoice created by WooCommerce', 'woocommerce-twinfield' );
+		$explanation_text .= "\r\n";
+		
 		////////
 		// Products
 		////////
 		
 		// Get all ordered products
 		$order_items = $this->order->get_items();
+		
+		// Add line to explanation
+		$explanation_text .= sprintf( __( '%d items ordered: ', 'woocommerce-twinfield' ), count( $order_items ) );
+		$explanation_text .= "\r\n";
 		
 		// Prepare the lines for the form
 		$fill_class_data['lines'] = array();
@@ -168,11 +179,24 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 				'vatcode' => $item['tax_class'],
 				'freetext1' => $order->get_line_tax( $item )
 			);
+			
+			$explanation_text .= sprintf( 
+				_x( '----- %d %s at %s', '[Quantity] [Product Name] at [Price]', 'woocommerce-twinfield' ), 
+				$item['qty'], 
+				$item['name'], 
+				$order->get_item_total( $item, false ) 
+			);
+			
+			$explanation_text .= "\r\n";
 		}
 		
 		////////
 		// Shipping
 		////////
+		
+		// Add line to explanation
+		$explanation_text .= sprintf( __( 'Shipping cost: %s', 'woocommerce_twinfield' ), $order->get_shipping_tax() );
+		$explanation_text .= "\r\n";
 		
 		// Get shipping article/subarticle
 		$shipping_article_id = WoocommerceTwinfield_Integration::get_shipping_article_id( $order->shipping_method );
@@ -197,6 +221,12 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		// Discounts
 		///////
 		
+		// Add line to explanation
+		$explanation_text .= sprintf( __( 'Cart Discount: %s', 'woocommerce-twinfield' ), $order->get_cart_discount() );
+		$explanation_text .= "\r\n";
+		$explanation_text .= sprintf( __( 'Order Discount: %s', 'woocommerce-twinfield' ), $order->get_order_discount() );
+		$explanation_text .= "\r\n";
+		
 		// Get discount article/subarticle
 		$discount_article_id = WoocommerceTwinfield_Integration::get_discount_article_id();
 		$discount_subarticle_id = WoocommerceTwinfield_Integration::get_discount_subarticle_id();
@@ -206,14 +236,20 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			'article' => $discount_article_id,
 			'subarticle' => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
 			'quantity' => 1,
-			'unitspriceexcl' => '0.0',
-			'vatcode' => 'VN',
-			'freetext1' => $order->get_cart_discount()
+			'unitspriceexcl' => - abs( $order->get_order_discount() ),
+			'vatcode' => 'VN'
 		);
 		
 		// Discounts
 		$fill_class_data['lines'][] = $discount_line;
 
+		/////////
+		// Finalization
+		/////////
+		
+		// Set the explanation to the header text
+		$fill_class_data['headertext'] = $explanation_text;
+		
 		return $fill_class_data;
 	}
 	

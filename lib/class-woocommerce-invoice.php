@@ -247,7 +247,7 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		// Finalization
 		/////////
 		
-		// Set the explanation to the header text
+		// Set the explanation to the header text.
 		$fill_class_data['headertext'] = $explanation_text;
 		
 		return $fill_class_data;

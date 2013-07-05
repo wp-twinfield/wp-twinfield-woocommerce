@@ -171,13 +171,13 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 
 			// Data for the lines
 			$fill_class_data['lines'][] = array(
-				'active' => true,
-				'article'	 => $article_id,
-				'subarticle' => $subarticle_id,
-				'quantity' => $item['qty'],
+				'active'         => true,
+				'article'	     => $article_id,
+				'subarticle'     => $subarticle_id,
+				'quantity'       => $item['qty'],
 				'unitspriceexcl' => $order->get_item_total( $item, false, false ),
-				'vatcode' => $item['tax_class'],
-				'freetext1' => $order->get_line_tax( $item )
+				'vatcode'        => $item['tax_class'],
+				'freetext1'      => $order->get_line_tax( $item )
 			);
 			
 			$explanation_text .= sprintf( 
@@ -203,12 +203,12 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		$shipping_subarticle_id = WoocommerceTwinfield_Integration::get_shipping_subarticle_id( $order->shipping_method );
 		
 		$shipping_line = array(
-			'active' => true,
-			'article' => $shipping_article_id,
-			'subarticle' => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
-			'quantity' => 1,
+			'active'         => true,
+			'article'        => $shipping_article_id,
+			'subarticle'     => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
+			'quantity'       => 1,
 			'unitspriceexcl' => $order->get_shipping_tax(),
-			'vatcode' => 'VN'
+			'vatcode'        => 'VN'
 		);
 		
 		if ( WoocommerceTwinfield_Integration::add_shipping_method_to_freetext() )
@@ -232,12 +232,12 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		$discount_subarticle_id = WoocommerceTwinfield_Integration::get_discount_subarticle_id();
 		
 		$discount_line = array(
-			'active' => true,
-			'article' => $discount_article_id,
-			'subarticle' => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
-			'quantity' => 1,
+			'active'         => true,
+			'article'        => $discount_article_id,
+			'subarticle'     => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
+			'quantity'       => 1,
 			'unitspriceexcl' => - abs( $order->get_order_discount() ),
-			'vatcode' => 'VN'
+			'vatcode'        => 'VN'
 		);
 		
 		// Discounts

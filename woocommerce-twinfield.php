@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: WP WooCommerce Twinfield
+ * Plugin Name: WooCommerce Twinfield
  * Plugin URI: http://pronamic.nl
  * Author: Pronamic
  * Author URI: http://pronamic.nl

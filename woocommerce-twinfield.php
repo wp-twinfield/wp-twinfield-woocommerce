@@ -28,7 +28,35 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		 * @hooks ACTION wp_twinfield_load_forms
 		 */
 		public function __construct() {
-
+			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
+		}
+		
+		public function plugins_loaded() {
+			if ( class_exists( 'Woocommerce' ) || class_exists( 'WooCommerce' )) {
+				include 'lib/class-woocommerce-invoice.php';
+				include 'lib/class-woocommerce-invoice-sync.php';
+				include 'lib/class-woocommercetwinfield-integration.php';
+				
+				$this->register_hooks();
+			}
+		}
+		
+		/**
+		 * Called if the WooCommerce class exists to ensure that the plugin dependancy
+		 * is met.
+		 * 
+		 * As long as there are not hooks before 'plugins_loaded' action, no problems will
+		 * occur.
+		 * 
+		 * The actions before 'plugins_loaded' are as follows: mu_plugins_loaded, registered_taxonomy and
+		 * registered_post_type.  
+		 * 
+		 * @see http://codex.wordpress.org/Plugin_API/Action_Reference#Actions_Run_During_an_Admin_Page_Request
+		 * 
+		 * @access public
+		 * @return void
+		 */
+		public function register_hooks() {
 			// Add the Twinfield Article Metabox to the Product Post Type
 			add_post_type_support( 'product', 'twinfield_article' );
 
@@ -37,14 +65,6 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			
 			add_action( 'wp_ajax_woocommerce_twinfield_formbuilder_load_order', array( $this, 'ajax_load_order' ) );
-			
-			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
-		}
-		
-		public function plugins_loaded() {
-			include 'lib/class-woocommerce-invoice.php';
-			include 'lib/class-woocommerce-invoice-sync.php';
-			include 'lib/class-woocommercetwinfield-integration.php';
 		}
 
 		/**

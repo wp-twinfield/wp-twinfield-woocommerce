@@ -6,6 +6,7 @@
  * Author: Pronamic
  * Author URI: http://pronamic.nl
  * Version: 1.0.0
+ * Domain: woocommerce-twinfield
  */
 if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 
@@ -65,6 +66,8 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 			add_action( 'admin_init', array( $this, 'admin_init' ) );
 			
 			add_action( 'wp_ajax_woocommerce_twinfield_formbuilder_load_order', array( $this, 'ajax_load_order' ) );
+			
+			load_plugin_textdomain( 'woocommerce-twinfield', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**

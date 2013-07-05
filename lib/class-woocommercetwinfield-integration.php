@@ -88,7 +88,7 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 	
 	public static function get_twinfield_settings() {
 		if ( ! $settings = wp_cache_get( 'woocommerce_twinfield_settings' ) ) {
-			$settings = get_option( 'woocommerce_twinfield_settings' );
+			$settings = get_option( 'woocommerce_twinfield_settings', array() );
 			wp_cache_set( 'woocommerce_twinfield_settings', $settings );
 		}
 		

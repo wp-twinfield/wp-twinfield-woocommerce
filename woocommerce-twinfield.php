@@ -78,7 +78,7 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		 */
 		public function load_forms() {
 			// Makes an instance of WooCommerce Invoice
-			$woocommerce_invoice = new Woocommerce_Invoice();
+			$woocommerce_invoice = new WooCommerce_Invoice();
 			$woocommerce_invoice->set_view( dirname( __FILE__ ) . '/views/woocommerce_invoice_form.php' );
 
 			// Registers the woocommerce invoice form
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 			
 			$wc_order = new WC_Order( filter_input( INPUT_POST, 'order_id', FILTER_SANITIZE_NUMBER_INT ) );
 			
-			$woocommerce_invoice = new Woocommerce_Invoice( $wc_order, Woocommerce_Invoice::check_for_twinfield_customer_id( $wc_order->id ) );
+			$woocommerce_invoice = new WooCommerce_Invoice( $wc_order, WooCommerce_Invoice::check_for_twinfield_customer_id( $wc_order->id ) );
 			
 			echo json_encode( $woocommerce_invoice->prepare_invoice() );
 			exit;

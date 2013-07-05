@@ -7,7 +7,7 @@
  * Author URI: http://pronamic.nl
  * Version: 1.0.0
  */
-if ( ! class_exists( 'WoocommerceTwinfield' ) ) :
+if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 
 	/**
 	 * Plugin class that adds support for twinfield_article to the product
@@ -19,7 +19,7 @@ if ( ! class_exists( 'WoocommerceTwinfield' ) ) :
 	 * @author Leon Rowland <leon@rowland.nl>
 	 * @version 1.0.0
 	 */
-	class WoocommerceTwinfield {
+	class WooCommerceTwinfield {
 
 		/**
 		 * Sets the product post type to support the twinfield_article
@@ -89,4 +89,4 @@ endif;
 
 // Loads the plugin class into global state.
 global $woocommerce_twinfield;
-$woocommerce_twinfield = new WoocommerceTwinfield();
+$woocommerce_twinfield = new WooCommerceTwinfield();

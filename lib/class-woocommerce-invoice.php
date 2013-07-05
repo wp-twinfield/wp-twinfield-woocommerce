@@ -13,7 +13,7 @@
  * @version 1.0.0
  */
 
-class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoice {
+class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoice {
 	
 	/**
 	 * Holds the passed in WC_Order instance
@@ -194,54 +194,58 @@ class Woocommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		// Shipping
 		////////
 		
-		// Add line to explanation
-		$explanation_text .= sprintf( __( 'Shipping cost: %s', 'woocommerce_twinfield' ), $order->get_shipping_tax() );
-		$explanation_text .= "\r\n";
-		
-		// Get shipping article/subarticle
-		$shipping_article_id = WoocommerceTwinfield_Integration::get_shipping_article_id( $order->shipping_method );
-		$shipping_subarticle_id = WoocommerceTwinfield_Integration::get_shipping_subarticle_id( $order->shipping_method );
-		
-		$shipping_line = array(
-			'active'         => true,
-			'article'        => $shipping_article_id,
-			'subarticle'     => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
-			'quantity'       => 1,
-			'unitspriceexcl' => $order->get_shipping_tax(),
-			'vatcode'        => 'VN'
-		);
-		
-		if ( WoocommerceTwinfield_Integration::add_shipping_method_to_freetext() )
-			$shipping_line['freetext1'] = $order->get_shipping_method();
-		
-		// Shipping Fees
-		$fill_class_data['lines'][] = $shipping_line;
+		if ( '0.00' != $order->get_shipping_tax() ) {
+			// Add line to explanation
+			$explanation_text .= sprintf( __( 'Shipping cost: %s', 'woocommerce_twinfield' ), $order->get_shipping_tax() );
+			$explanation_text .= "\r\n";
+
+			// Get shipping article/subarticle
+			$shipping_article_id = WooCommerceTwinfield_Integration::get_shipping_article_id( $order->shipping_method );
+			$shipping_subarticle_id = WooCommerceTwinfield_Integration::get_shipping_subarticle_id( $order->shipping_method );
+
+			$shipping_line = array(
+				'active'         => true,
+				'article'        => $shipping_article_id,
+				'subarticle'     => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
+				'quantity'       => 1,
+				'unitspriceexcl' => $order->get_shipping_tax(),
+				'vatcode'        => 'VN'
+			);
+
+			if ( WooCommerceTwinfield_Integration::add_shipping_method_to_freetext() )
+				$shipping_line['freetext1'] = $order->get_shipping_method();
+
+			// Shipping Fees
+			$fill_class_data['lines'][] = $shipping_line;
+		}
 		
 		///////
 		// Discounts
 		///////
 		
-		// Add line to explanation
-		$explanation_text .= sprintf( __( 'Cart Discount: %s', 'woocommerce-twinfield' ), $order->get_cart_discount() );
-		$explanation_text .= "\r\n";
-		$explanation_text .= sprintf( __( 'Order Discount: %s', 'woocommerce-twinfield' ), $order->get_order_discount() );
-		$explanation_text .= "\r\n";
-		
-		// Get discount article/subarticle
-		$discount_article_id = WoocommerceTwinfield_Integration::get_discount_article_id();
-		$discount_subarticle_id = WoocommerceTwinfield_Integration::get_discount_subarticle_id();
-		
-		$discount_line = array(
-			'active'         => true,
-			'article'        => $discount_article_id,
-			'subarticle'     => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
-			'quantity'       => 1,
-			'unitspriceexcl' => - abs( $order->get_order_discount() ),
-			'vatcode'        => 'VN'
-		);
-		
-		// Discounts
-		$fill_class_data['lines'][] = $discount_line;
+		if ( '0.00' != $order->get_order_discount() || '0.00' != $order->get_cart_discount() ) {
+			// Add line to explanation
+			$explanation_text .= sprintf( __( 'Cart Discount: %s', 'woocommerce-twinfield' ), $order->get_cart_discount() );
+			$explanation_text .= "\r\n";
+			$explanation_text .= sprintf( __( 'Order Discount: %s', 'woocommerce-twinfield' ), $order->get_order_discount() );
+			$explanation_text .= "\r\n";
+
+			// Get discount article/subarticle
+			$discount_article_id = WooCommerceTwinfield_Integration::get_discount_article_id();
+			$discount_subarticle_id = WooCommerceTwinfield_Integration::get_discount_subarticle_id();
+
+			$discount_line = array(
+				'active'         => true,
+				'article'        => $discount_article_id,
+				'subarticle'     => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
+				'quantity'       => 1,
+				'unitspriceexcl' => - abs( $order->get_order_discount() ),
+				'vatcode'        => 'VN'
+			);
+
+			// Discounts
+			$fill_class_data['lines'][] = $discount_line;
+		}
 
 		/////////
 		// Finalization

@@ -38,6 +38,10 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 			
 			add_action( 'wp_ajax_woocommerce_twinfield_formbuilder_load_order', array( $this, 'ajax_load_order' ) );
 			
+			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
+		}
+		
+		public function plugins_loaded() {
 			include 'lib/class-woocommerce-invoice.php';
 			include 'lib/class-woocommerce-invoice-sync.php';
 			include 'lib/class-woocommercetwinfield-integration.php';

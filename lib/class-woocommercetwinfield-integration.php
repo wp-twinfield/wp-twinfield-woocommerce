@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class WooCommerceTwinfield_Integration extends WC_Integration {
+class WoocommerceTwinfield_Integration extends WC_Integration {
 	
 	public function __construct() {
 		

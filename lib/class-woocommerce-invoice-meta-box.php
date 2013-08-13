@@ -32,8 +32,8 @@ class Woocommerce_Invoice_Meta_Box {
 			'spinner' => admin_url( 'images/wpspin_light.gif' )
 		) );
 		
-		$invoice_number = WooCommerce_Invoice::check_for_twinfield_invoice_number( $post->ID );
-		$customer_id = WooCommerce_Invoice::check_for_twinfield_customer_id( $post->ID );
+		$invoice_number = Woocommerce_Invoice::check_for_twinfield_invoice_number( $post->ID );
+		$customer_id = Woocommerce_Invoice::check_for_twinfield_customer_id( $post->ID );
 		
 		$view = new \ZFramework\Base\View( $woocommerce_twinfield->plugin_folder() . '/views' );
 		$view

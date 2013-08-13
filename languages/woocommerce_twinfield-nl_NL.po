@@ -1,0 +1,504 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Twinfield\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-05 14:40+0100\n"
+"PO-Revision-Date: 2013-07-05 14:41+0100\n"
+"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
+"Language-Team: Pronamic <info@pronamic.nl>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: lib/class-woocommerce-invoice-meta-box.php:18
+msgid "WooCommerce Invoice Sync"
+msgstr ""
+
+#: lib/class-woocommerce-invoice-sync.php:37
+#, fuzzy
+msgid "Successfully synced"
+msgstr "Succesvol!"
+
+#: lib/class-woocommerce-invoice.php:146
+msgid "Invoice created by WooCommerce"
+msgstr ""
+
+#: lib/class-woocommerce-invoice.php:157
+#, php-format
+msgid "%d items ordered: "
+msgstr ""
+
+#: lib/class-woocommerce-invoice.php:199
+#, php-format
+msgid "Shipping cost: %s"
+msgstr ""
+
+#: lib/class-woocommerce-invoice.php:228
+#, php-format
+msgid "Cart Discount: %s"
+msgstr ""
+
+#: lib/class-woocommerce-invoice.php:230
+#, php-format
+msgid "Order Discount: %s"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:10
+msgid "Twinfield"
+msgstr "Twinfield"
+
+#: lib/class-woocommercetwinfield-integration.php:11
+msgid "Settings for the WP Twinfield Plugin Bridge for Woocommerce"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:28
+#, fuzzy
+msgid "Twinfield Discount Settings"
+msgstr "Twinfield instellingen"
+
+#: lib/class-woocommercetwinfield-integration.php:30
+msgid ""
+"You can supply just the Article ID or even a specific Subarticle ID.  It is "
+"only required that you fill in the ArticleID field"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:34
+#, fuzzy
+msgid "Twinfield Discount Article ID"
+msgstr "Twinfield artikel"
+
+#: lib/class-woocommercetwinfield-integration.php:35
+msgid "Article ID for the Discount Article from Twinfield"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:41
+#, fuzzy
+msgid "Twinfield Discount Subarticle ID"
+msgstr "Twinfield documentatie"
+
+#: lib/class-woocommercetwinfield-integration.php:42
+msgid ""
+"Subarticle ID for the Discount Article from Twinfield. <i>(optional)</i>"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:48
+#, fuzzy
+msgid "Twinfield Shipping Settings"
+msgstr "Twinfield instellingen"
+
+#: lib/class-woocommercetwinfield-integration.php:50
+msgid ""
+"You can supply just the Article ID or even a specific Subarticle ID.  It is "
+"only required that you fill in the ArticleID field<br/>If you have all your "
+"shipping methods under 1 Article, then fill the same Article ID for all "
+"shipping methods below"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:54
+msgid "Add Shipping Method to FreeText field in Invoice?"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:57
+msgid "No"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:58
+msgid "Yes"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:72
+#, fuzzy, php-format
+msgid "Twinfield Settings for %s method"
+msgstr "Twinfield instellingen"
+
+#: lib/class-woocommercetwinfield-integration.php:77
+#, php-format
+msgid "Article ID for %s method"
+msgstr ""
+
+#: lib/class-woocommercetwinfield-integration.php:82
+#, fuzzy, php-format
+msgid "Subarticle ID for %s method"
+msgstr "Subartikel ID"
+
+#: views/woocommerce_invoice_form.php:59
+msgid "Invoice Form"
+msgstr "Factuur formulier"
+
+#: views/woocommerce_invoice_form.php:64
+msgid "Load WooCommerce Order"
+msgstr ""
+
+#: views/woocommerce_invoice_form.php:71
+msgid "Load"
+msgstr ""
+
+#: views/woocommerce_invoice_form.php:75
+msgid "Invoice Number"
+msgstr "Factuurnummer"
+
+#: views/woocommerce_invoice_form.php:81
+msgid "Invoice Type"
+msgstr "Factuur type"
+
+#: views/woocommerce_invoice_form.php:87
+#: views/woocommerce_invoice_meta_box_view.php:17
+msgid "Customer ID"
+msgstr "Klant ID"
+
+#: views/woocommerce_invoice_form.php:96
+msgid "Article"
+msgstr "Artikel"
+
+#: views/woocommerce_invoice_form.php:97
+msgid "Subarticle"
+msgstr "Subartikel"
+
+#: views/woocommerce_invoice_form.php:98
+msgid "Quantity"
+msgstr "Aantal"
+
+#: views/woocommerce_invoice_form.php:99
+msgid "Units"
+msgstr "Eenheid"
+
+#: views/woocommerce_invoice_form.php:100
+msgid "Units Excl"
+msgstr "Eenheid excl."
+
+#: views/woocommerce_invoice_form.php:101
+msgid "Vatcode"
+msgstr "BTW-code"
+
+#: views/woocommerce_invoice_form.php:102
+msgid "Free Text 1"
+msgstr "Vrije tekst 1"
+
+#: views/woocommerce_invoice_form.php:103
+msgid "Free Text 2"
+msgstr "Vrije tekst 2"
+
+#: views/woocommerce_invoice_form.php:104
+msgid "Free Text 3"
+msgstr "Vrije tekst 3"
+
+#: views/woocommerce_invoice_meta_box_view.php:14
+#, fuzzy, php-format
+msgid "Twinfield Invoice Number: %d"
+msgstr "Factuurnummer"
+
+#: views/woocommerce_invoice_meta_box_view.php:20
+msgid "Sync"
+msgstr "Sync"
+
+#~ msgid "Settings"
+#~ msgstr "Instellingen"
+
+#~ msgid "Twinfield Offices"
+#~ msgstr "Twinfield kantoren"
+
+#~ msgid "Offices"
+#~ msgstr "Kantoren"
+
+#~ msgid "Twinfield Form Builder"
+#~ msgstr "Twinfield formulieren"
+
+#~ msgid "Form Builder"
+#~ msgstr "Formulieren"
+
+#~ msgid "Merger Tool"
+#~ msgstr "Samenvoegen tool"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentatie"
+
+#~ msgid "Twinfield Customer"
+#~ msgstr "Twinfield klant"
+
+#~ msgid "Customer requires CoC Number as Custom Meta Field"
+#~ msgstr "Klant vereist KvK nummer als een maatwerk meta veld"
+
+#~ msgid "Invoice Date"
+#~ msgstr "Factuurdatum"
+
+#~ msgid "Due Date"
+#~ msgstr "Vervaldatum"
+
+#~ msgid "Office"
+#~ msgstr "Kantoor"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Customer"
+#~ msgstr "Klant"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Article ID"
+#~ msgstr "Artikel ID"
+
+#~ msgid "Twinfield Customer ID"
+#~ msgstr "Twinfield klant ID"
+
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Addresses"
+#~ msgstr "Adressen"
+
+#~ msgid "City"
+#~ msgstr "Plaats"
+
+#~ msgid "Postal Code"
+#~ msgstr "Postcode"
+
+#~ msgid "Telephone"
+#~ msgstr "Telefoon"
+
+#~ msgid "Customer Form"
+#~ msgstr "Klant formulier"
+
+#~ msgid "Newest Number"
+#~ msgstr "Nieuwste nummer"
+
+#~ msgid "Website"
+#~ msgstr "Website"
+
+#~ msgid "Due Days"
+#~ msgstr "Vervaldagen"
+
+#~ msgid "Electronic Invoice"
+#~ msgstr "Elektronische factuur"
+
+#~ msgid "Electronic Invoice Email"
+#~ msgstr "Elektronische factuur e-mailadres"
+
+#~ msgid "Vat Code"
+#~ msgstr "Belasting code"
+
+#~ msgid "Default?"
+#~ msgstr "Standaaard?"
+
+#~ msgid "Line 1"
+#~ msgstr "Regel 1"
+
+#~ msgid "Line 2"
+#~ msgstr "Regel 2"
+
+#~ msgid "Line 3"
+#~ msgstr "Regel 3"
+
+#~ msgid "CoC Number"
+#~ msgstr "KvK nummer"
+
+#~ msgid "Postcode"
+#~ msgstr "Postcode"
+
+#~ msgid "Country"
+#~ msgstr "Land"
+
+#~ msgid "Email"
+#~ msgstr "E-mailadres"
+
+#~ msgid "Send"
+#~ msgstr "Verstuur"
+
+#~ msgid "Invoice %s"
+#~ msgstr "Factuur %s"
+
+#~ msgid "Header"
+#~ msgstr "Header"
+
+#~ msgid "Lines"
+#~ msgstr "Regels"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Sub article"
+#~ msgstr "Subartikel"
+
+#~ msgid "Description"
+#~ msgstr "Beschrijving"
+
+#~ msgid "Value Excl"
+#~ msgstr "Waarde excl."
+
+#~ msgid "Vat Value"
+#~ msgstr "Belasting waarde"
+
+#~ msgid "Value Inc"
+#~ msgstr "Waarde incl."
+
+#~ msgid "Units Price Excl"
+#~ msgstr "Eenheid prijs excl."
+
+#~ msgid "Free text 1"
+#~ msgstr "Vrije tekst 1"
+
+#~ msgid "Post Title"
+#~ msgstr "Bericht titel"
+
+#~ msgid "Meta Field"
+#~ msgstr "Meta veld"
+
+#~ msgid "Matched?"
+#~ msgstr "Overeenkomst?"
+
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#~ msgid "Webservices"
+#~ msgstr "Webservices"
+
+#~ msgid "Templates (Dutch)"
+#~ msgstr "Sjablonen (Nederlands)"
+
+#~ msgid "Templates (English)"
+#~ msgstr "Sjablonen (Engels)"
+
+#~ msgid "version %s"
+#~ msgstr "versie %s"
+
+#~ msgid "%s"
+#~ msgstr "%s"
+
+#~ msgid "Response Limit"
+#~ msgstr "Response limiet"
+
+#~ msgid "Response Offset"
+#~ msgstr "Response offset"
+
+#~ msgid "Custom Meta Field"
+#~ msgstr "Maatwerk meta veld"
+
+#~ msgid "New Custom Field"
+#~ msgstr "Nieuwe maatwerk veld"
+
+#~ msgid "Show"
+#~ msgstr "Tonen"
+
+#~ msgid "Automate"
+#~ msgstr "Automatiseer"
+
+#~ msgid "Code"
+#~ msgstr "Code"
+
+#~ msgid "Shortname"
+#~ msgstr "Korte naam"
+
+#~ msgid "Username"
+#~ msgstr "Gebruikersnaam"
+
+#~ msgid "Password"
+#~ msgstr "Wachtwoord"
+
+#~ msgid "Organisation"
+#~ msgstr "Organisatie"
+
+#~ msgid "Office Code"
+#~ msgstr "Kantoorcode"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Latitude"
+#~ msgstr "Breedtegraad"
+
+#~ msgid "Longitude"
+#~ msgstr "Lengtegraad"
+
+#~ msgid "Width"
+#~ msgstr "Breedte"
+
+#~ msgid "Height"
+#~ msgstr "Hoogte"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dynamisch"
+
+#~ msgid "Active"
+#~ msgstr "Actief"
+
+#~ msgid "Show Google Maps"
+#~ msgstr "Google Maps weergeven"
+
+#~ msgid "Search"
+#~ msgstr "Zoeken"
+
+#~ msgid "Configuration - Pronamic Google Maps"
+#~ msgstr "Configuratie - Pronamic Google Maps"
+
+#~ msgid "Activate Google Maps"
+#~ msgstr "Activeer Google Maps"
+
+#~ msgid "Use this widget to add an Google Maps as a widget."
+#~ msgstr "Gebruik deze widget om Google Maps toe te voegen."
+
+#~ msgid "Google Maps"
+#~ msgstr "Google Maps"
+
+#~ msgid "pixels"
+#~ msgstr "pixels"
+
+#~ msgid "percent"
+#~ msgstr "procent"
+
+#~ msgid "Pronamic Google Maps"
+#~ msgstr "Pronamic Google Maps"
+
+#~ msgid "Click to toggle"
+#~ msgstr "Klik om te wisselen"
+
+#~ msgid "Donate $10, $20 or $50!"
+#~ msgstr "Doneer $10, $20 of $50!"
+
+#~ msgid ""
+#~ "This plugin has cost us countless hours of work, if you use it, please "
+#~ "donate a token of your appreciation!"
+#~ msgstr ""
+#~ "Het ons veel uren werken gekost om deze plugin te ontwikkelen, als je het "
+#~ "gebruikt, doneer a.u.b. voor je waardering!"
+
+#~ msgid "Latest news from Pronamic"
+#~ msgstr "Laatste nieuws van Pronamic"
+
+#~ msgid "no news items, feed might be broken..."
+#~ msgstr "geen nieuws items, feed is waarschijnlijk niet bereikbaar..."
+
+#~ msgid "Subscribe with RSS"
+#~ msgstr "Aanmelden voor RSS"
+
+#~ msgid "Subscribe by e-mail"
+#~ msgstr "Aanmelden via e-mail"
+
+#~ msgid "Like this plugin?"
+#~ msgstr "Vind je deze plugin leuk?"
+
+#~ msgid "Why not do any or all of the following:"
+#~ msgstr "Waarom doe je niet één van de volgende dingen:"
+
+#~ msgid "Link to it so other folks can find out about it."
+#~ msgstr "Link naar ons zodat anderen deze plugin ook ontdekken."
+
+#~ msgid "Give it a good rating on WordPress.org."
+#~ msgstr "Geef het een goede score op WordPress.org."
+
+#~ msgid "Let other people know that it works with your WordPress setup."
+#~ msgstr "Laat anderen weten dat het werk op je WordPress installatie."
+
+#~ msgid "Save Changes"
+#~ msgstr "Wijzigingen opslaan"
+
+#~ msgid "Found a bug?"
+#~ msgstr "Bug gevonden?"
+
+#~ msgid "Configuration"
+#~ msgstr "Configuratie"

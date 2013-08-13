@@ -13,7 +13,7 @@ class Woocommerce_Invoice_Sync {
 		$wc_order = new WC_Order( $post_id );
 		
 		// Get the Woocommerce Invoice
-		$this->woocommerce_invoice = new WooCommerce_Invoice( $wc_order, $customer_id );
+		$this->woocommerce_invoice = new Woocommerce_Invoice( $wc_order, $customer_id );
 		
 		if ( $this->woocommerce_invoice->submit() ) {
 			return true;

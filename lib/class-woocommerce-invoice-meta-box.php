@@ -44,10 +44,17 @@ class Woocommerce_Invoice_Meta_Box {
 	}
 	
 	public function save( $post_id, $post ) {
-		if ( ! filter_has_var( INPUT_POST, 'woocommerce_twinfield_sync' ) )
-			return;
-		
+        if ( 'shop_order' !== $post->post_type )
+            return;
+        
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+            return;
+        
 		$customer_id = filter_input( INPUT_POST, 'woocommerce_invoice_customer_id', FILTER_SANITIZE_STRING );
+        $invoice_id = filter_input( INPUT_POST, 'woocommerce_invoice_id', FILTER_SANITIZE_NUMBER_INT );
+        
+        update_post_meta( $post_id, '_twinfield_customer_id', $customer_id );
+        update_post_meta( $post_id, '_twinfield_invoice_id', $invoice_id );
 		
 		$this->woocommerce_invoice_sync->sync( $post_id, $customer_id );
 	}

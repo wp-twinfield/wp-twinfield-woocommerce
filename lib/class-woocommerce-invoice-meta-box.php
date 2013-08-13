@@ -15,7 +15,7 @@ class Woocommerce_Invoice_Meta_Box {
 	public function add_meta_boxes() {
 		add_meta_box(
 			'woocommerce_invoice_meta_box',
-			__( 'WooCommerce Invoice Sync', 'woocommerce_twinfield' ),
+			__( 'Twinfield Invoice', 'woocommerce_twinfield' ),
 			array( $this, 'view' ),
 			'shop_order',
 			'side',

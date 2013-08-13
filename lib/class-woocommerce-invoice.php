@@ -277,8 +277,8 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			$customer_id = $invoice->getCustomer()->getID();
 			
 			// Add to the post meta, and return the invoice number
-			update_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_number', $invoice_number );
-			update_post_meta( $this->order->id, '_woocommerce_twinfield_invoice_customer_id', $customer_id );
+			update_post_meta( $this->order->id, '_twinfield_invoice_id', $invoice_number );
+			update_post_meta( $this->order->id, '_twinfield_customer_id', $customer_id );
 			
 			return $invoice_number;
 		} else {
@@ -293,7 +293,7 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @return int/false
 	 */
 	public static function check_for_twinfield_invoice_number( $order_id ) {
-		return get_post_meta( $order_id, '_woocommerce_twinfield_invoice_number', true );
+		return get_post_meta( $order_id, '_twinfield_invoice_id', true );
 	}
 	
 	/**
@@ -301,7 +301,7 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @return int|false
 	 */
 	public static function check_for_twinfield_customer_id( $order_id ) {
-		return get_post_meta( $order_id, '_woocommerce_twinfield_invoice_customer_id', true );
+		return get_post_meta( $order_id, '_twinfield_customer_id', true );
 	}
 
 }

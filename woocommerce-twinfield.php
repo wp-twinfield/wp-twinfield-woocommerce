@@ -115,6 +115,8 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 
 endif;
 
-// Loads the plugin class into global state.
-global $woocommerce_twinfield;
-$woocommerce_twinfield = new WooCommerceTwinfield();
+if( defined( 'PRONAMIC_TWINFIELD_FILE' ) ) {
+    // Loads the plugin class into global state.
+    global $woocommerce_twinfield;
+    $woocommerce_twinfield = new WooCommerceTwinfield();
+}

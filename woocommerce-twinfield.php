@@ -35,7 +35,6 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		public function plugins_loaded() {
 			if ( class_exists( 'Woocommerce' ) || class_exists( 'WooCommerce' )) {
 				include 'lib/class-woocommerce-invoice.php';
-				include 'lib/class-woocommerce-invoice-sync.php';
 				include 'lib/class-woocommercetwinfield-integration.php';
 				
 				$this->register_hooks();

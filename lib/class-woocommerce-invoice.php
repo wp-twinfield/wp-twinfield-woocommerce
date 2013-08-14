@@ -50,9 +50,10 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @param WC_Order $order OPTIONAL
 	 * @return void
 	 */
-	public function __construct( WC_Order $order = null, $customer_id = null, $invoice_type = 'FACTUUR' ) {
+	public function __construct( WC_Order $order = null, $customer_id = null, $invoice_id = null, $invoice_type = 'FACTUUR' ) {
 		$this->order = $order;
 		$this->customer_id = $customer_id;
+        $this->invoice_id = $invoice_id;
 		$this->invoice_type = $invoice_type;
 	}
 
@@ -133,12 +134,8 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		$fill_class_data = array();
 		$fill_class_data['customerID']		 = $this->customer_id;
 		$fill_class_data['invoiceType']		 = $this->invoice_type;
-		$fill_class_data['invoiceNumber']	 = '';
-		
-		if ( $invoice_number = self::check_for_twinfield_invoice_number( $this->order->id ) ) {
-			$fill_class_data['invoiceNumber'] = $invoice_number;
-		}
-		
+		$fill_class_data['invoiceNumber']	 = $this->invoice_id;
+				
 		/////////
 		// Header
 		/////////
@@ -256,52 +253,4 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		
 		return $fill_class_data;
 	}
-	
-	/**
-	 * Should be called after a true response from the Invoice::submit() method
-	 * call. It will add the twinfield_invoice_number to the post meta of the
-	 * order.  It will prevent future calls to the sync button from adding new
-	 * orders when it should update existing.
-	 * 
-	 * @access public
-	 * @return int|bool
-	 */
-	public function successful() {
-		// Map the response to an Invoice object
-		$invoice = Pronamic\Twinfield\Invoice\Mapper\InvoiceMapper::map( $this->get_response() );
-		
-		// Check the response is an invoice object
-		if ( $invoice instanceof \Pronamic\Twinfield\Invoice\Invoice ) {
-			// Get the responded invoice number
-			$invoice_number = $invoice->getInvoiceNumber();
-			$customer_id = $invoice->getCustomer()->getID();
-			
-			// Add to the post meta, and return the invoice number
-			update_post_meta( $this->order->id, '_twinfield_invoice_id', $invoice_number );
-			update_post_meta( $this->order->id, '_twinfield_customer_id', $customer_id );
-			
-			return $invoice_number;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
-	 * Returns the recorded invoice number if one exists or false if not.
-	 * 
-	 * @access public
-	 * @return int/false
-	 */
-	public static function check_for_twinfield_invoice_number( $order_id ) {
-		return get_post_meta( $order_id, '_twinfield_invoice_id', true );
-	}
-	
-	/**
-	 * Returns the recorded customer id if one exists or false if not.
-	 * @return int|false
-	 */
-	public static function check_for_twinfield_customer_id( $order_id ) {
-		return get_post_meta( $order_id, '_twinfield_customer_id', true );
-	}
-
 }

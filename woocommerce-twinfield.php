@@ -86,8 +86,10 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		}
 		
 		public function admin_init() {
-			include 'lib/class-woocommerce-invoice-meta-box.php';
-			$invoice_meta_box = new Woocommerce_Invoice_Meta_Box();
+			add_post_type_support( 'shop_order', 'twinfield_invoiceable' );
+            
+            include 'lib/class-woocommerce-invoicemetabox.php';
+            \Pronamic\WP\Twinfield\Invoice\InvoiceMetaBoxFactory::register( 'shop_order', 'Woocommerce_InvoiceMetaBox' );
 		}
 		
 		public function ajax_load_order() {

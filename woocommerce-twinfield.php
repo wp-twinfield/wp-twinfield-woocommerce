@@ -59,6 +59,7 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		public function register_hooks() {
 			// Add the Twinfield Article Metabox to the Product Post Type
 			add_post_type_support( 'product', 'twinfield_article' );
+            add_post_type_support( 'shop_order', 'twinfield_invoiceable' );
 
 			add_action( 'wp_twinfield_formbuilder_load_forms', array( $this, 'load_forms' ) );
 			
@@ -85,8 +86,6 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		}
 		
 		public function admin_init() {
-			add_post_type_support( 'shop_order', 'twinfield_invoiceable' );
-            
             include 'lib/class-woocommerce-invoicemetabox.php';
             \Pronamic\WP\Twinfield\Invoice\InvoiceMetaBoxFactory::register( 'shop_order', 'Woocommerce_InvoiceMetaBox' );
 		}

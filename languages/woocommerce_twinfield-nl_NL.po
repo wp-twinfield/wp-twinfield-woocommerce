@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Twinfield\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-05 14:40+0100\n"
-"PO-Revision-Date: 2013-07-05 14:41+0100\n"
+"POT-Creation-Date: 2013-08-15 16:17+0100\n"
+"PO-Revision-Date: 2013-08-15 16:18+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -12,38 +12,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: lib/class-woocommerce-invoice-meta-box.php:18
-msgid "WooCommerce Invoice Sync"
-msgstr ""
-
-#: lib/class-woocommerce-invoice-sync.php:37
-#, fuzzy
-msgid "Successfully synced"
-msgstr "Succesvol!"
-
-#: lib/class-woocommerce-invoice.php:146
+#: lib/class-woocommerce-invoice.php:143
 msgid "Invoice created by WooCommerce"
 msgstr ""
 
-#: lib/class-woocommerce-invoice.php:157
+#: lib/class-woocommerce-invoice.php:154
 #, php-format
 msgid "%d items ordered: "
 msgstr ""
 
-#: lib/class-woocommerce-invoice.php:199
+#: lib/class-woocommerce-invoice.php:196
 #, php-format
 msgid "Shipping cost: %s"
 msgstr ""
 
-#: lib/class-woocommerce-invoice.php:228
+#: lib/class-woocommerce-invoice.php:225
 #, php-format
 msgid "Cart Discount: %s"
 msgstr ""
 
-#: lib/class-woocommerce-invoice.php:230
+#: lib/class-woocommerce-invoice.php:227
 #, php-format
 msgid "Order Discount: %s"
 msgstr ""
@@ -147,7 +138,7 @@ msgid "Invoice Type"
 msgstr "Factuur type"
 
 #: views/woocommerce_invoice_form.php:87
-#: views/woocommerce_invoice_meta_box_view.php:17
+#: views/woocommerce_invoice_meta_box_view.php:22
 msgid "Customer ID"
 msgstr "Klant ID"
 
@@ -187,14 +178,22 @@ msgstr "Vrije tekst 2"
 msgid "Free Text 3"
 msgstr "Vrije tekst 3"
 
-#: views/woocommerce_invoice_meta_box_view.php:14
-#, fuzzy, php-format
-msgid "Twinfield Invoice Number: %d"
+#: views/woocommerce_invoice_meta_box_view.php:16
+#, fuzzy
+msgid "Twinfield Invoice ID"
 msgstr "Factuurnummer"
 
-#: views/woocommerce_invoice_meta_box_view.php:20
+#: views/woocommerce_invoice_meta_box_view.php:26
+msgid "View"
+msgstr ""
+
+#: views/woocommerce_invoice_meta_box_view.php:28
 msgid "Sync"
 msgstr "Sync"
+
+#, fuzzy
+#~ msgid "Successfully synced"
+#~ msgstr "Succesvol!"
 
 #~ msgid "Settings"
 #~ msgstr "Instellingen"

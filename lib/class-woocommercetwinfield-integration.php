@@ -8,7 +8,7 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 		
 		$this->id = 'twinfield';
 		$this->method_title = __( 'Twinfield', 'woocommerce-twinfield' );
-		$this->method_description = __( 'Settings for the WP Twinfield Plugin Bridge for Woocommerce', 'woocommerce-twinfield' );
+		$this->method_description = __( 'Settings for the WooCommerce Twinfield integration.', 'woocommerce-twinfield' );
 		
 		$this->init_form_fields();
 		$this->init_settings();

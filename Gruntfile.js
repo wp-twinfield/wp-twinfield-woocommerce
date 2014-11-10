@@ -16,7 +16,10 @@ module.exports = function( grunt ) {
 		// PHP Code Sniffer
 		phpcs: {
 			application: {
-				dir: [ '*.php', 'includes/*.php' ],
+				dir: [
+					'**/*.php',
+					'!node_modules/**'
+				],
 			},
 			options: {
 				standard: 'phpcs.ruleset.xml',
@@ -78,8 +81,8 @@ module.exports = function( grunt ) {
 			},
 			files: {
 				src:  [
-					'**/*.php', // Include all files
-					'!node_modules/**' // Exclude node_modules/
+					'**/*.php',
+					'!node_modules/**'
 				],
 				expand: true
 			}

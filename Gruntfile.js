@@ -44,7 +44,7 @@ module.exports = function( grunt ) {
 		checkwpversion: {
 			options: {
 				readme: 'readme.txt',
-				plugin: 'twinfield.php',
+				plugin: 'twinfield-woocommerce.php',
 			},
 			check: {
 				version1: 'plugin',

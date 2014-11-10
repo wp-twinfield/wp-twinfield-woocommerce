@@ -2,35 +2,35 @@
 
 /**
  * FormBuilder Form Invoice Extended Class to support WooCommerce Orders
- * 
+ *
  * Call an instance of this Invoice and pass into it, the WC_Order you wish
  * to create an entry for.
- * 
+ *
  * @package FormBuilder\Form\Invoice
  * @subpackage WooCommerce Invoice
- * 
+ *
  * @author Leon Rowland <leon@rowland.nl>
  * @version 1.0.0
  */
 
 class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoice {
-	
+
 	/**
 	 * Holds the passed in WC_Order instance
 	 * from instantiation
-	 * 
+	 *
 	 * @var WC_Order
 	 */
 	private $order;
-	
+
 	/**
 	 * Holds the customers ID. Has to be set
 	 * with the setter
-	 * 
+	 *
 	 * @var int
 	 */
 	private $customer_id;
-	
+
 	/**
 	 * Holds the orders invoice type. For now
 	 * it defaults to `FACTUUR` you can overide
@@ -38,14 +38,14 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @var string
 	 */
 	private $invoice_type = 'FACTUUR';
-	
+
 	/**
 	 * Holds the WC Order in the class for use when
 	 * fill_class is called.
-	 * 
+	 *
 	 * The $order must be optional to support the base
 	 * FormBuilder UI
-	 * 
+	 *
 	 * @access public
 	 * @param WC_Order $order OPTIONAL
 	 * @return void
@@ -61,11 +61,11 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * Checks to see if a WC_Order is set, then get the
 	 * data from prepare_invoice method and use that
 	 * instead of the first passed data.
-	 * 
+	 *
 	 * Calls parent::fill_class()
-	 * 
+	 *
 	 * @overide
-	 * 
+	 *
 	 * @access public
 	 * @param array $data
 	 * @return object
@@ -74,18 +74,18 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		if ( null !== $this->order ) {
 			$data = $this->prepare_invoice( $this->order );
 		}
-		
+
 		return parent::fill_class( $data );
 	}
-	
+
 	/**
 	 * Sets some extra variables for the FormBuilder UI.
-	 * 
+	 *
 	 * Currently sets a key of 'orders' that hold all
-	 * the orders in WooCommerce. 
-	 * 
+	 * the orders in WooCommerce.
+	 *
 	 * @overide
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 */
@@ -97,9 +97,9 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	}
 
 	/**
-	 * Called from inside prepare_extra_variables that gives back the 
+	 * Called from inside prepare_extra_variables that gives back the
 	 * array of all orders
-	 * 
+	 *
 	 * @access public
 	 * @return array
 	 */
@@ -108,20 +108,20 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			'post_type' => 'shop_order',
 			'posts_per_page' => -1
 		) );
-		
+
 		return $orders_query->posts;
 	}
-	
+
 	/**
 	 * Maps the WC_Order to the required array for the fill_class method
-	 * 
+	 *
 	 * Is called from this child classes fill_class method, where if the
 	 * WC_Order exists from instantiation then the data returned here overides
 	 * the default data passed into fill_class()
-	 * 
+	 *
 	 * You can just also call this public method and manually pass the data
 	 * into fill_class or use for any other purpose.
-	 * 
+	 *
 	 * @access public
 	 * @param WC_Order $order
 	 * @return array
@@ -129,37 +129,37 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	public function prepare_invoice( WC_Order $order = null ) {
 		if ( $order )
 			$this->order = $order;
-		
+
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
 		$fill_class_data['customerID']		 = $this->customer_id;
 		$fill_class_data['invoiceType']		 = $this->invoice_type;
 		$fill_class_data['invoiceNumber']	 = $this->invoice_id;
-				
+
 		/////////
 		// Header
 		/////////
-		
+
 		$explanation_text  = __( 'Invoice created by WooCommerce', 'twinfield_woocommerce' );
 		$explanation_text .= "\r\n";
-		
+
 		////////
 		// Products
 		////////
-		
+
 		// Get all ordered products
 		$order_items = $this->order->get_items();
-		
+
 		// Add line to explanation
 		$explanation_text .= sprintf( __( '%d items ordered: ', 'twinfield_woocommerce' ), count( $order_items ) );
 		$explanation_text .= "\r\n";
-		
+
 		// Prepare the lines for the form
 		$fill_class_data['lines'] = array();
-		
+
 		// Go through all the products and add the items order information
 		foreach ( $order_items as $item ) {
-			
+
 			$article_information = get_post_meta( $item['product_id'], '_twinfield_article', true );
 
 			// Find and article and subarticle id if set
@@ -176,21 +176,21 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 				'vatcode'        => $item['tax_class'],
 				'freetext1'      => $order->get_line_tax( $item )
 			);
-			
-			$explanation_text .= sprintf( 
-				_x( '----- %d %s at %s', '[Quantity] [Product Name] at [Price]', 'twinfield_woocommerce' ), 
-				$item['qty'], 
-				$item['name'], 
-				$order->get_item_total( $item, false ) 
+
+			$explanation_text .= sprintf(
+				_x( '----- %d %s at %s', '[Quantity] [Product Name] at [Price]', 'twinfield_woocommerce' ),
+				$item['qty'],
+				$item['name'],
+				$order->get_item_total( $item, false )
 			);
-			
+
 			$explanation_text .= "\r\n";
 		}
-		
+
 		////////
 		// Shipping
 		////////
-		
+
 		if ( '0.00' != $order->get_shipping_tax() ) {
 			// Add line to explanation
 			$explanation_text .= sprintf( __( 'Shipping cost: %s', 'twinfield_woocommerce' ), $order->get_shipping_tax() );
@@ -215,11 +215,11 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 			// Shipping Fees
 			$fill_class_data['lines'][] = $shipping_line;
 		}
-		
+
 		///////
 		// Discounts
 		///////
-		
+
 		if ( '0.00' != $order->get_order_discount() || '0.00' != $order->get_cart_discount() ) {
 			// Add line to explanation
 			$explanation_text .= sprintf( __( 'Cart Discount: %s', 'twinfield_woocommerce' ), $order->get_cart_discount() );
@@ -247,10 +247,10 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 		/////////
 		// Finalization
 		/////////
-		
+
 		// Set the explanation to the header text.
 		$fill_class_data['headertext'] = $explanation_text;
-		
+
 		return $fill_class_data;
 	}
 }

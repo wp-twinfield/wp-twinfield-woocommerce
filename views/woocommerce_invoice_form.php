@@ -7,13 +7,13 @@
 				FormBuilderUI.load();
 				FormBuilderUI.addRow();
 			});
-			
-			
+
+
 			$('.woocommerce_order_dropdown_load').click(function(e) {
 				e.preventDefault();
-				
+
 				var chosen_order = $('.woocommerce_order_dropdown').val();
-				
+
 				$.ajax({
 					 type:'POST'
 					,url:ajaxurl
@@ -27,11 +27,11 @@
 						$.each(data, function(i,value){
 							if('lines' === i) {
 								$.each(value, function(rowInt, rowValue){
-									
+
 									// Add new rows if above 1
 									if(rowInt>0)
 										FormBuilderUI.addRow();
-									
+
 									// Loop through the values
 									$.each(rowValue, function(rowValueName, rowValueValue){
 										$('input[name="lines['+(rowInt+1)+']['+rowValueName+']"]').val(rowValueValue);
@@ -42,15 +42,15 @@
 							}
 						});
 					}
-					
+
 					,error: function(one,two,three) {
 						console.log(one);
 						console.log(two);
 						console.log(three);
 					}
-					
+
 				});
-				
+
 			});
 		});
 

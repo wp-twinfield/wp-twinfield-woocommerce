@@ -159,12 +159,9 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 
 		// Go through all the products and add the items order information
 		foreach ( $order_items as $item ) {
-
-			$article_information = get_post_meta( $item['product_id'], '_twinfield_article', true );
-
 			// Find and article and subarticle id if set
-			$article_id		 = ( isset( $article_information['article_id'] ) ) ? $article_information['article_id'] : '';
-			$subarticle_id	 = ( isset( $article_information['subarticle_id'] ) ) ? $article_information['subarticle_id'] : '';
+			$article_id    = get_post_meta( $item['product_id'], '_twinfield_article_id', true );
+			$subarticle_id = get_post_meta( $item['product_id'], '_twinfield_subarticle_id', true );
 
 			// Data for the lines
 			$fill_class_data['lines'][] = array(
@@ -173,7 +170,7 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 				'subarticle'     => $subarticle_id,
 				'quantity'       => $item['qty'],
 				'unitspriceexcl' => $order->get_item_total( $item, false, false ),
-				'vatcode'        => $item['tax_class'],
+				'vatcode'        => 'VH',
 				'freetext1'      => $order->get_line_tax( $item )
 			);
 
@@ -197,8 +194,8 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 			$explanation_text .= "\r\n";
 
 			// Get shipping article/subarticle
-			$shipping_article_id = WooCommerceTwinfield_Integration::get_shipping_article_id( $order->shipping_method );
-			$shipping_subarticle_id = WooCommerceTwinfield_Integration::get_shipping_subarticle_id( $order->shipping_method );
+			$shipping_article_id = Pronamic_Twinfield_WooCommerce_Integration::get_shipping_article_id( $order->shipping_method );
+			$shipping_subarticle_id = Pronamic_Twinfield_WooCommerce_Integration::get_shipping_subarticle_id( $order->shipping_method );
 
 			$shipping_line = array(
 				'active'         => true,
@@ -209,7 +206,7 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 				'vatcode'        => 'VN',
 			);
 
-			if ( WooCommerceTwinfield_Integration::add_shipping_method_to_freetext() ) {
+			if ( Pronamic_Twinfield_WooCommerce_Integration::add_shipping_method_to_freetext() ) {
 				$shipping_line['freetext1'] = $order->get_shipping_method();
 			}
 
@@ -229,8 +226,8 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 			$explanation_text .= "\r\n";
 
 			// Get discount article/subarticle
-			$discount_article_id = WooCommerceTwinfield_Integration::get_discount_article_id();
-			$discount_subarticle_id = WooCommerceTwinfield_Integration::get_discount_subarticle_id();
+			$discount_article_id = Pronamic_Twinfield_WooCommerce_Integration::get_discount_article_id();
+			$discount_subarticle_id = Pronamic_Twinfield_WooCommerce_Integration::get_discount_subarticle_id();
 
 			$discount_line = array(
 				'active'         => true,

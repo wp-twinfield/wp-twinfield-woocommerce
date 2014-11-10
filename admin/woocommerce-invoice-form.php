@@ -60,8 +60,6 @@
 <h2><?php _e( 'Invoice Form', 'twinfield_woocommerce' ); ?></h2>
 
 <form method="POST" class="input-form">
-	<?php echo $nonce; ?>
-
 	<table class="form-table">
 		<tr>
 			<th><?php _e( 'Load WooCommerce Order', 'twinfield_woocommerce' ); ?></th>

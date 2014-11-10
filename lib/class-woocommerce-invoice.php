@@ -14,7 +14,6 @@
  */
 
 class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoice {
-
 	/**
 	 * Holds the passed in WC_Order instance
 	 * from instantiation
@@ -53,7 +52,7 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	public function __construct( WC_Order $order = null, $customer_id = null, $invoice_id = null, $invoice_type = 'FACTUUR' ) {
 		$this->order = $order;
 		$this->customer_id = $customer_id;
-        $this->invoice_id = $invoice_id;
+		$this->invoice_id = $invoice_id;
 		$this->invoice_type = $invoice_type;
 	}
 
@@ -105,8 +104,8 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 */
 	public function get_all_orders() {
 		$orders_query = new WP_Query( array(
-			'post_type' => 'shop_order',
-			'posts_per_page' => -1
+			'post_type'      => 'shop_order',
+			'posts_per_page' => -1,
 		) );
 
 		return $orders_query->posts;
@@ -127,8 +126,9 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 	 * @return array
 	 */
 	public function prepare_invoice( WC_Order $order = null ) {
-		if ( $order )
+		if ( $order ) {
 			$this->order = $order;
+		}
 
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
@@ -206,11 +206,12 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 				'subarticle'     => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
 				'quantity'       => 1,
 				'unitspriceexcl' => $order->get_shipping_tax(),
-				'vatcode'        => 'VN'
+				'vatcode'        => 'VN',
 			);
 
-			if ( WooCommerceTwinfield_Integration::add_shipping_method_to_freetext() )
+			if ( WooCommerceTwinfield_Integration::add_shipping_method_to_freetext() ) {
 				$shipping_line['freetext1'] = $order->get_shipping_method();
+			}
 
 			// Shipping Fees
 			$fill_class_data['lines'][] = $shipping_line;
@@ -237,7 +238,7 @@ class WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoic
 				'subarticle'     => ( isset( $discount_subarticle_id ) ? $discount_subarticle_id : '' ),
 				'quantity'       => 1,
 				'unitspriceexcl' => - abs( $order->get_order_discount() ),
-				'vatcode'        => 'VN'
+				'vatcode'        => 'VN',
 			);
 
 			// Discounts

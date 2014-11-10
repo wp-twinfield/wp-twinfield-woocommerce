@@ -42,7 +42,7 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		}
 
 		public function plugins_loaded() {
-			if ( class_exists( 'Woocommerce' ) || class_exists( 'WooCommerce' )) {
+			if ( class_exists( 'Woocommerce' ) || class_exists( 'WooCommerce' ) ) {
 				include 'lib/class-woocommerce-invoice.php';
 				include 'lib/class-woocommercetwinfield-integration.php';
 
@@ -70,7 +70,7 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		public function register_hooks() {
 			// Add the Twinfield Article Metabox to the Product Post Type
 			add_post_type_support( 'product', 'twinfield_article' );
-            add_post_type_support( 'shop_order', 'twinfield_invoiceable' );
+			add_post_type_support( 'shop_order', 'twinfield_invoiceable' );
 
 			add_action( 'wp_twinfield_formbuilder_load_forms', array( $this, 'load_forms' ) );
 
@@ -97,20 +97,22 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		}
 
 		public function admin_init() {
-            include 'lib/class-woocommerce-invoicemetabox.php';
-            \Pronamic\WP\Twinfield\Invoice\InvoiceMetaBoxFactory::register( 'shop_order', 'Woocommerce_InvoiceMetaBox' );
+			include 'lib/class-woocommerce-invoicemetabox.php';
+
+			\Pronamic\WP\Twinfield\Invoice\InvoiceMetaBoxFactory::register( 'shop_order', 'Woocommerce_InvoiceMetaBox' );
 		}
 
 		public function ajax_load_order() {
-
-			if ( ! filter_has_var( INPUT_POST, 'order_id' ) )
+			if ( ! filter_has_var( INPUT_POST, 'order_id' ) ) {
 				exit;
+			}
 
 			$wc_order = new WC_Order( filter_input( INPUT_POST, 'order_id', FILTER_SANITIZE_NUMBER_INT ) );
 
 			$woocommerce_invoice = new Woocommerce_Invoice( $wc_order, Woocommerce_Invoice::check_for_twinfield_customer_id( $wc_order->id ) );
 
 			echo json_encode( $woocommerce_invoice->prepare_invoice() );
+
 			exit;
 		}
 
@@ -125,8 +127,9 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 
 endif;
 
-if( defined( 'PRONAMIC_TWINFIELD_FILE' ) ) {
-    // Loads the plugin class into global state.
-    global $woocommerce_twinfield;
-    $woocommerce_twinfield = new WooCommerceTwinfield();
+if ( defined( 'PRONAMIC_TWINFIELD_FILE' ) ) {
+	// Loads the plugin class into global state.
+	global $woocommerce_twinfield;
+
+	$woocommerce_twinfield = new WooCommerceTwinfield();
 }

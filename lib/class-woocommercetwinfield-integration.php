@@ -45,17 +45,17 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 		$shipping_methods = $wc_shipping->load_shipping_methods();
 
 		foreach ( $shipping_methods as $shipping_method ) {
-			$this->form_fields['shipping_title_method_' . $shipping_method->id ] = array(
+			$this->form_fields[ 'shipping_title_method_' . $shipping_method->id ] = array(
 				'title' => $shipping_method->method_title,
 				'type'  => 'title',
 			);
 
-			$this->form_fields['shipping_article_id_method_' . $shipping_method->id ] = array(
+			$this->form_fields[ 'shipping_article_id_method_' . $shipping_method->id ] = array(
 				'title' => __( 'Article ID', 'twinfield_woocommerce' ),
 				'type'  => 'text',
 			);
 
-			$this->form_fields['shipping_subarticle_id_method_' . $shipping_method->id ] = array(
+			$this->form_fields[ 'shipping_subarticle_id_method_' . $shipping_method->id ] = array(
 				'title' => __( 'Subarticle ID', 'twinfield_woocommerce' ),
 				'type'  => 'text',
 			);
@@ -84,7 +84,7 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 		$key = 'shipping_article_id_method_' . $shipping_method;
 
 		if ( array_key_exists( $key, $settings ) ) {
-			return $settings[$key];
+			return $settings[ $key ];
 		} else {
 			return false;
 		}
@@ -95,8 +95,8 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 
 		$key = 'shipping_subarticle_id_method_' . $shipping_method;
 
-		if ( array_key_exists( $key, $settings) ) {
-			return $settings[$key];
+		if ( array_key_exists( $key, $settings ) ) {
+			return $settings[ $key ];
 		} else {
 			return false;
 		}

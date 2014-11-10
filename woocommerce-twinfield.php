@@ -47,6 +47,8 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 				include 'lib/class-woocommercetwinfield-integration.php';
 				
 				$this->register_hooks();
+
+				load_plugin_textdomain( 'twinfield_woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 			}
 		}
 		

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Twinfield WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "http://wordpress.org/support/plugin/woocommerce-twinfield\n"
-"POT-Creation-Date: 2014-11-10 13:11:32+00:00\n"
+"POT-Creation-Date: 2014-11-10 13:25:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,65 +38,17 @@ msgstr ""
 msgid "Twinfield"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:10
-msgid "Settings for the WooCommerce Twinfield integration."
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:29
+#: lib/class-woocommercetwinfield-integration.php:28
 msgid "Discount"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:31
-msgid ""
-"You can supply just the Article ID or even a specific Subarticle ID.  It is "
-"only required that you fill in the ArticleID field"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:34
-msgid "Discount Article ID"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:35
-msgid "Article ID for the Discount Article from Twinfield"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:40
-msgid "Discount Subarticle ID"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:41
-msgid "Subarticle ID for the Discount Article from Twinfield. <i>(optional)</i>"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:46
-msgid "Shipping"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:48
-msgid ""
-"You can supply just the Article ID or even a specific Subarticle ID.  It is "
-"only required that you fill in the ArticleID field<br/>If you have all your "
-"shipping methods under 1 Article, then fill the same Article ID for all "
-"shipping methods below"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:51
-msgid "Add Shipping Method to FreeText field in Invoice?"
-msgstr ""
-
+#: lib/class-woocommercetwinfield-integration.php:32
 #: lib/class-woocommercetwinfield-integration.php:54
-msgid "No"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:55
-msgid "Yes"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:73
 msgid "Article ID"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:78
+#: lib/class-woocommercetwinfield-integration.php:36
+#: lib/class-woocommercetwinfield-integration.php:59
 msgid "Subarticle ID"
 msgstr ""
 

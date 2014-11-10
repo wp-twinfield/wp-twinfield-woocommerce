@@ -5,9 +5,8 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 	 * Constructs and initialize an WooCommerce Twinfield integration class
 	 */
 	public function __construct() {
-		$this->id                 = 'twinfield';
-		$this->method_title       = __( 'Twinfield', 'twinfield_woocommerce' );
-		$this->method_description = __( 'Settings for the WooCommerce Twinfield integration.', 'twinfield_woocommerce' );
+		$this->id           = 'twinfield';
+		$this->method_title = __( 'Twinfield', 'twinfield_woocommerce' );
 		
 		$this->init_form_fields();
 		$this->init_settings();
@@ -28,33 +27,15 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 			'twinfield_discount' => array(
 				'title'       => __( 'Discount', 'twinfield_woocommerce' ),
 				'type'        => 'title',
-				'description' => __( 'You can supply just the Article ID or even a specific Subarticle ID.  It is only required that you fill in the ArticleID field', 'twinfield_woocommerce' ),
 			),			
 			'discount_article_id' => array(
-				'title'       => __( 'Discount Article ID', 'twinfield_woocommerce' ),
-				'description' => __( 'Article ID for the Discount Article from Twinfield', 'twinfield_woocommerce' ),
+				'title'       => __( 'Article ID', 'twinfield_woocommerce' ),
 				'type'        => 'text',
-				'default'     => '',
 			),
 			'discount_subarticle_id' => array(
-				'title'       => __( 'Discount Subarticle ID', 'twinfield_woocommerce' ),
-				'description' => __( 'Subarticle ID for the Discount Article from Twinfield. <i>(optional)</i>', 'twinfield_woocommerce' ),
+				'title'       => __( 'Subarticle ID', 'twinfield_woocommerce' ),
 				'type'        => 'text',
-				'default'     => '',
 			),			
-			'twinfield_shipping' => array(
-				'title'       => __( 'Shipping', 'twinfield_woocommerce' ),
-				'type'        => 'title',
-				'description' => __( 'You can supply just the Article ID or even a specific Subarticle ID.  It is only required that you fill in the ArticleID field<br/>If you have all your shipping methods under 1 Article, then fill the same Article ID for all shipping methods below', 'twinfield_woocommerce' ),
-			),		
-			'add_shipping_method_to_freetext' => array(
-				'title'       => __( 'Add Shipping Method to FreeText field in Invoice?', 'twinfield_woocommerce' ),
-				'type'        => 'select',
-				'options'     => array(
-					'0' => __( 'No', 'twinfield_woocommerce' ),
-					'1' => __( 'Yes', 'twinfield_woocommerce' ),
-				),
-			),
 		);
 		
 		// Get the WC Shopping class

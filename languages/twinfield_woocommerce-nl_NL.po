@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: WooCommerce Twinfield\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/woocommerce-"
 "twinfield\n"
-"POT-Creation-Date: 2014-11-10 13:11:32+00:00\n"
-"PO-Revision-Date: 2014-11-10 14:14+0100\n"
+"POT-Creation-Date: 2014-11-10 13:25:35+00:00\n"
+"PO-Revision-Date: 2014-11-10 14:26+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -40,66 +40,17 @@ msgstr "Bestelling korting: %s"
 msgid "Twinfield"
 msgstr "Twinfield"
 
-#: lib/class-woocommercetwinfield-integration.php:10
-msgid "Settings for the WooCommerce Twinfield integration."
-msgstr "Instellingen voor de WooCommerce Twinfield integratie."
-
-#: lib/class-woocommercetwinfield-integration.php:29
+#: lib/class-woocommercetwinfield-integration.php:28
 msgid "Discount"
 msgstr "Korting"
 
-#: lib/class-woocommercetwinfield-integration.php:31
-msgid ""
-"You can supply just the Article ID or even a specific Subarticle ID.  It is "
-"only required that you fill in the ArticleID field"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:34
-msgid "Discount Article ID"
-msgstr "Korting artikel ID"
-
-#: lib/class-woocommercetwinfield-integration.php:35
-msgid "Article ID for the Discount Article from Twinfield"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:40
-msgid "Discount Subarticle ID"
-msgstr "Korting subartikel ID"
-
-#: lib/class-woocommercetwinfield-integration.php:41
-msgid ""
-"Subarticle ID for the Discount Article from Twinfield. <i>(optional)</i>"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:46
-msgid "Shipping"
-msgstr "Verzending"
-
-#: lib/class-woocommercetwinfield-integration.php:48
-msgid ""
-"You can supply just the Article ID or even a specific Subarticle ID.  It is "
-"only required that you fill in the ArticleID field<br/>If you have all your "
-"shipping methods under 1 Article, then fill the same Article ID for all "
-"shipping methods below"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:51
-msgid "Add Shipping Method to FreeText field in Invoice?"
-msgstr ""
-
+#: lib/class-woocommercetwinfield-integration.php:32
 #: lib/class-woocommercetwinfield-integration.php:54
-msgid "No"
-msgstr "Nee"
-
-#: lib/class-woocommercetwinfield-integration.php:55
-msgid "Yes"
-msgstr "Ja"
-
-#: lib/class-woocommercetwinfield-integration.php:73
 msgid "Article ID"
 msgstr "Artikel ID"
 
-#: lib/class-woocommercetwinfield-integration.php:78
+#: lib/class-woocommercetwinfield-integration.php:36
+#: lib/class-woocommercetwinfield-integration.php:59
 msgid "Subarticle ID"
 msgstr "Subartikel ID"
 
@@ -199,7 +150,25 @@ msgstr "http://www.pronamic.nl/"
 #: lib/class-woocommerce-invoice.php:181
 msgctxt "[Quantity] [Product Name] at [Price]"
 msgid "----- %d %s at %s"
-msgstr ""
+msgstr "----- %d %s voor %s"
+
+#~ msgid "Settings for the WooCommerce Twinfield integration."
+#~ msgstr "Instellingen voor de WooCommerce Twinfield integratie."
+
+#~ msgid "Discount Article ID"
+#~ msgstr "Korting artikel ID"
+
+#~ msgid "Discount Subarticle ID"
+#~ msgstr "Korting subartikel ID"
+
+#~ msgid "Shipping"
+#~ msgstr "Verzending"
+
+#~ msgid "No"
+#~ msgstr "Nee"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
 
 #, fuzzy
 #~ msgid "Twinfield Discount Settings"

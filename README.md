@@ -1,3 +1,7 @@
 # Twinfield for WooCommerce
 
-Twinfield plugin for WooCommerce, requires the [Twinfield](https://github.com/wp-twinfield/wp-twinfield) plugin.
+WordPress Twinfield plugin for WooCommerce.
+
+## Requirements
+
+*	[Twinfield](https://github.com/wp-twinfield/wp-twinfield) plugin.

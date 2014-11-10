@@ -1,13 +1,22 @@
 <?php
+/*
+Plugin Name: Twinfield WooCommerce
+Plugin URI: http://www.happywp.com/plugins/twinfield-woocommerce/
+Description: WordPress Twinfield plugin for WooCommerce.
 
-/**
- * Plugin Name: Twinfield WooCommerce
- * Plugin URI: http://www.pronamic.eu/
- * Author: Pronamic
- * Author URI: http://www.pronamic.eu/
- * Version: 1.0.0
- * Domain: twinfield_woocommerce
- */
+Version: 1.0.0
+Requires at least: 3.6
+
+Author: Pronamic
+Author URI: http://www.pronamic.eu/
+
+Text Domain: twinfield_woocommerce
+Domain Path: /languages/
+
+License: GPL
+GitHub URI: https://github.com/wp-twinfield/wp-twinfield-woocommerce
+*/
+
 if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 
 	/**

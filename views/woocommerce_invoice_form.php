@@ -56,35 +56,35 @@
 
 	})(jQuery);
 </script>
-<h2><?php _e( 'Invoice Form', 'twinfield' ); ?></h2>
+<h2><?php _e( 'Invoice Form', 'twinfield_woocommerce' ); ?></h2>
 <form method="POST" class="input-form">
 	<?php echo $nonce; ?>
 	<table class="form-table">
 		<tr>
-			<th><?php _e( 'Load WooCommerce Order', 'woocommerce-twinfield' ); ?></th>
+			<th><?php _e( 'Load WooCommerce Order', 'twinfield_woocommerce' ); ?></th>
 			<td>
 				<select class="woocommerce_order_dropdown">
 					<?php foreach ( $form_extra['orders'] as $order ) : ?>
 						<option value="<?php echo $order->ID; ?>"><?php echo $order->post_title; ?></option>
 					<?php endforeach; ?>
 				</select>
-				<input class="button woocommerce_order_dropdown_load" type="submit" value="<?php _e( 'Load', 'woocommerce-twinfield' ); ?>"/>
+				<input class="button woocommerce_order_dropdown_load" type="submit" value="<?php _e( 'Load', 'twinfield_woocommerce' ); ?>"/>
 			</td>
 		</tr>
 		<tr>
-			<th><?php _e( 'Invoice Number', 'twinfield' ); ?></th>
+			<th><?php _e( 'Invoice Number', 'twinfield_woocommerce' ); ?></th>
 			<td>
 				<input type="text" name="invoiceNumber" value="<?php echo $object->getInvoiceNumber(); ?>"/>
 			</td>
 		</tr>
 		<tr>
-			<th><?php _e( 'Invoice Type', 'twinfield' ); ?></th>
+			<th><?php _e( 'Invoice Type', 'twinfield_woocommerce' ); ?></th>
 			<td>
 				<input type="text" name="invoiceType" value="<?php echo $object->getInvoiceType(); ?>"/>
 			</td>
 		</tr>
 		<tr>
-			<th><?php _e( 'Customer ID', 'twinfield' ); ?></th>
+			<th><?php _e( 'Customer ID', 'twinfield_woocommerce' ); ?></th>
 			<td>
 				<input type="text" name="customerID" value="<?php echo $object->getCustomer()->getID(); ?>"/>
 			</td>
@@ -93,15 +93,15 @@
 	<br/>
 	<table class="widefat">
 		<thead>
-			<th><?php _e( 'Article', 'twinfield' ); ?></th>
-			<th><?php _e( 'Subarticle', 'twinfield' ); ?></th>
-			<th><?php _e( 'Quantity', 'twinfield' ); ?></th>
-			<th><?php _e( 'Units', 'twinfield' ); ?></th>
-			<th><?php _e( 'Units Excl', 'twinfield' ); ?></th>
-			<th><?php _e( 'Vatcode', 'twinfield' ); ?></th>
-			<th><?php _e( 'Free Text 1', 'twinfield' ); ?></th>
-			<th><?php _e( 'Free Text 2', 'twinfield' ); ?></th>
-			<th><?php _e( 'Free Text 3', 'twinfield' ); ?></th>
+			<th><?php _e( 'Article', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Subarticle', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Quantity', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Units', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Units Excl', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Vatcode', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Free Text 1', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Free Text 2', 'twinfield_woocommerce' ); ?></th>
+			<th><?php _e( 'Free Text 3', 'twinfield_woocommerce' ); ?></th>
 		</thead>
 		<tbody class="jFormBuilderUI_TableBody">
 			<?php $lines = $object->getLines(); ?>

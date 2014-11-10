@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="Twinfield">
+	<description>A custom set of rules to check for the Twinfield WooCommerce plugin.</description>
+
+	<rule ref="WordPress">
+		
+	</rule>
+</ruleset>

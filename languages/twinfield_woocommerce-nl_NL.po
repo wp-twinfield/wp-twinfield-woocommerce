@@ -1,9 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Twinfield\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-15 16:17+0100\n"
-"PO-Revision-Date: 2013-08-15 16:18+0100\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/woocommerce-"
+"twinfield\n"
+"POT-Creation-Date: 2014-11-10 13:11:32+00:00\n"
+"PO-Revision-Date: 2014-11-10 14:14+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -12,77 +13,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: lib/class-woocommerce-invoice.php:143
 msgid "Invoice created by WooCommerce"
-msgstr ""
+msgstr "Factuur gemaakt door WooCommerce"
 
 #: lib/class-woocommerce-invoice.php:154
-#, php-format
 msgid "%d items ordered: "
-msgstr ""
+msgstr "%d items besteld: "
 
 #: lib/class-woocommerce-invoice.php:196
-#, php-format
 msgid "Shipping cost: %s"
-msgstr ""
+msgstr "Verzending kosten: %s"
 
 #: lib/class-woocommerce-invoice.php:225
-#, php-format
 msgid "Cart Discount: %s"
-msgstr ""
+msgstr "Winkelwagen korting: %s"
 
 #: lib/class-woocommerce-invoice.php:227
-#, php-format
 msgid "Order Discount: %s"
-msgstr ""
+msgstr "Bestelling korting: %s"
 
-#: lib/class-woocommercetwinfield-integration.php:10
+#: lib/class-woocommercetwinfield-integration.php:9
 msgid "Twinfield"
 msgstr "Twinfield"
 
-#: lib/class-woocommercetwinfield-integration.php:11
-msgid "Settings for the WP Twinfield Plugin Bridge for Woocommerce"
-msgstr ""
+#: lib/class-woocommercetwinfield-integration.php:10
+msgid "Settings for the WooCommerce Twinfield integration."
+msgstr "Instellingen voor de WooCommerce Twinfield integratie."
 
-#: lib/class-woocommercetwinfield-integration.php:28
-#, fuzzy
-msgid "Twinfield Discount Settings"
-msgstr "Twinfield instellingen"
+#: lib/class-woocommercetwinfield-integration.php:29
+msgid "Discount"
+msgstr "Korting"
 
-#: lib/class-woocommercetwinfield-integration.php:30
+#: lib/class-woocommercetwinfield-integration.php:31
 msgid ""
 "You can supply just the Article ID or even a specific Subarticle ID.  It is "
 "only required that you fill in the ArticleID field"
 msgstr ""
 
 #: lib/class-woocommercetwinfield-integration.php:34
-#, fuzzy
-msgid "Twinfield Discount Article ID"
-msgstr "Twinfield artikel"
+msgid "Discount Article ID"
+msgstr "Korting artikel ID"
 
 #: lib/class-woocommercetwinfield-integration.php:35
 msgid "Article ID for the Discount Article from Twinfield"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:41
-#, fuzzy
-msgid "Twinfield Discount Subarticle ID"
-msgstr "Twinfield documentatie"
+#: lib/class-woocommercetwinfield-integration.php:40
+msgid "Discount Subarticle ID"
+msgstr "Korting subartikel ID"
 
-#: lib/class-woocommercetwinfield-integration.php:42
+#: lib/class-woocommercetwinfield-integration.php:41
 msgid ""
 "Subarticle ID for the Discount Article from Twinfield. <i>(optional)</i>"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:48
-#, fuzzy
-msgid "Twinfield Shipping Settings"
-msgstr "Twinfield instellingen"
+#: lib/class-woocommercetwinfield-integration.php:46
+msgid "Shipping"
+msgstr "Verzending"
 
-#: lib/class-woocommercetwinfield-integration.php:50
+#: lib/class-woocommercetwinfield-integration.php:48
 msgid ""
 "You can supply just the Article ID or even a specific Subarticle ID.  It is "
 "only required that you fill in the ArticleID field<br/>If you have all your "
@@ -90,31 +83,24 @@ msgid ""
 "shipping methods below"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:54
+#: lib/class-woocommercetwinfield-integration.php:51
 msgid "Add Shipping Method to FreeText field in Invoice?"
 msgstr ""
 
-#: lib/class-woocommercetwinfield-integration.php:57
+#: lib/class-woocommercetwinfield-integration.php:54
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
-#: lib/class-woocommercetwinfield-integration.php:58
+#: lib/class-woocommercetwinfield-integration.php:55
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
-#: lib/class-woocommercetwinfield-integration.php:72
-#, fuzzy, php-format
-msgid "Twinfield Settings for %s method"
-msgstr "Twinfield instellingen"
+#: lib/class-woocommercetwinfield-integration.php:73
+msgid "Article ID"
+msgstr "Artikel ID"
 
-#: lib/class-woocommercetwinfield-integration.php:77
-#, php-format
-msgid "Article ID for %s method"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:82
-#, fuzzy, php-format
-msgid "Subarticle ID for %s method"
+#: lib/class-woocommercetwinfield-integration.php:78
+msgid "Subarticle ID"
 msgstr "Subartikel ID"
 
 #: views/woocommerce_invoice_form.php:59
@@ -123,11 +109,11 @@ msgstr "Factuur formulier"
 
 #: views/woocommerce_invoice_form.php:64
 msgid "Load WooCommerce Order"
-msgstr ""
+msgstr "WooCommerce bestelling laden"
 
 #: views/woocommerce_invoice_form.php:71
 msgid "Load"
-msgstr ""
+msgstr "Laden"
 
 #: views/woocommerce_invoice_form.php:75
 msgid "Invoice Number"
@@ -179,17 +165,57 @@ msgid "Free Text 3"
 msgstr "Vrije tekst 3"
 
 #: views/woocommerce_invoice_meta_box_view.php:16
-#, fuzzy
 msgid "Twinfield Invoice ID"
-msgstr "Factuurnummer"
+msgstr "Twinfield factuur ID"
 
 #: views/woocommerce_invoice_meta_box_view.php:26
 msgid "View"
-msgstr ""
+msgstr "Bekijk"
 
 #: views/woocommerce_invoice_meta_box_view.php:28
 msgid "Sync"
 msgstr "Sync"
+
+#. Plugin Name of the plugin/theme
+msgid "Twinfield WooCommerce"
+msgstr "Twinfield WooCommerce"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.happywp.com/plugins/twinfield-woocommerce/"
+msgstr "http://www.happywp.com/plugins/twinfield-woocommerce/"
+
+#. Description of the plugin/theme
+msgid "WordPress Twinfield plugin for WooCommerce."
+msgstr "WordPress Twinfield plugin voor WooCommerce."
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr "http://www.pronamic.nl/"
+
+#: lib/class-woocommerce-invoice.php:181
+msgctxt "[Quantity] [Product Name] at [Price]"
+msgid "----- %d %s at %s"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Twinfield Discount Settings"
+#~ msgstr "Twinfield instellingen"
+
+#, fuzzy
+#~ msgid "Twinfield Shipping Settings"
+#~ msgstr "Twinfield instellingen"
+
+#, fuzzy
+#~ msgid "Twinfield Settings for %s method"
+#~ msgstr "Twinfield instellingen"
+
+#, fuzzy
+#~ msgid "Subarticle ID for %s method"
+#~ msgstr "Subartikel ID"
 
 #, fuzzy
 #~ msgid "Successfully synced"
@@ -216,9 +242,6 @@ msgstr "Sync"
 #~ msgid "Documentation"
 #~ msgstr "Documentatie"
 
-#~ msgid "Twinfield Customer"
-#~ msgstr "Twinfield klant"
-
 #~ msgid "Customer requires CoC Number as Custom Meta Field"
 #~ msgstr "Klant vereist KvK nummer als een maatwerk meta veld"
 
@@ -239,9 +262,6 @@ msgstr "Sync"
 
 #~ msgid "Status"
 #~ msgstr "Status"
-
-#~ msgid "Article ID"
-#~ msgstr "Artikel ID"
 
 #~ msgid "Twinfield Customer ID"
 #~ msgstr "Twinfield klant ID"
@@ -419,9 +439,6 @@ msgstr "Sync"
 
 #~ msgid "Height"
 #~ msgstr "Hoogte"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dynamisch"
 
 #~ msgid "Active"
 #~ msgstr "Actief"

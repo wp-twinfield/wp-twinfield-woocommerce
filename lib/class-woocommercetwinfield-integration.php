@@ -69,18 +69,18 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 		foreach ( $shipping_methods as $shipping_method ) {
 			
 			$this->form_fields['shipping_title_method_' . $shipping_method->id] = array(
-				'title' => sprintf( __( 'Twinfield Settings for %s method', 'woocommerce-twinfield' ), $shipping_method->method_title ),
-				'type' => 'title'
+				'title' => $shipping_method->method_title,
+				'type'  => 'title',
 			);
 			
 			$this->form_fields['shipping_article_id_method_' . $shipping_method->id] = array(
-				'title' => sprintf( __( 'Article ID for %s method', 'woocommerce-twinfield' ), $shipping_method->method_title ),
-				'type' => 'text'
+				'title' => __( 'Article ID', 'twinfield_woocommerce' ),
+				'type'  => 'text',
 			);
 			
 			$this->form_fields['shipping_subarticle_id_method_' . $shipping_method->id] = array(
-				'title' => sprintf( __( 'Subarticle ID for %s method', 'woocommerce-twinfield' ), $shipping_method->method_title ),
-				'type' => 'text'
+				'title' => __( 'Subarticle ID', 'woocommerce-twinfield' ),
+				'type'  => 'text',
 			);
 		}
 		

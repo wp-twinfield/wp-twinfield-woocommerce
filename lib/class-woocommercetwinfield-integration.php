@@ -25,27 +25,27 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 		
 		$this->form_fields = array(
 			'twinfield_discount' => array(
-				'title' => __( 'Twinfield Discount Settings', 'woocommerce-twinfield' ),
+				'title' => __( 'Discount', 'woocommerce-twinfield' ),
 				'type' => 'title',
 				'description' => __( 'You can supply just the Article ID or even a specific Subarticle ID.  It is only required that you fill in the ArticleID field', 'woocommerce-twinfield' )
 			),
 			
 			'discount_article_id' => array(
-				'title' => __( 'Twinfield Discount Article ID', 'woocommerce-twinfield' ),
+				'title' => __( 'Discount Article ID', 'woocommerce-twinfield' ),
 				'description' => __( 'Article ID for the Discount Article from Twinfield', 'woocommerce-twinfield' ),
 				'type' => 'text',
 				'default' => ''
 			),
 			
 			'discount_subarticle_id' => array(
-				'title' => __( 'Twinfield Discount Subarticle ID', 'woocommerce-twinfield' ),
+				'title' => __( 'Discount Subarticle ID', 'woocommerce-twinfield' ),
 				'description' => __( 'Subarticle ID for the Discount Article from Twinfield. <i>(optional)</i>', 'woocommerce-twinfield' ),
 				'type' => 'text',
 				'default' => ''
 			),
 			
 			'twinfield_shipping' => array(
-				'title' => __( 'Twinfield Shipping Settings', 'woocommerce-twinfield' ),
+				'title' => __( 'Shipping', 'woocommerce-twinfield' ),
 				'type' => 'title',
 				'description' => __( 'You can supply just the Article ID or even a specific Subarticle ID.  It is only required that you fill in the ArticleID field<br/>If you have all your shipping methods under 1 Article, then fill the same Article ID for all shipping methods below', 'woocommerce-twinfield' )
 			),

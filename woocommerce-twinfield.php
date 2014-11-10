@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Plugin Name: WooCommerce Twinfield
- * Plugin URI: http://pronamic.nl
+ * Plugin Name: Twinfield WooCommerce
+ * Plugin URI: http://www.pronamic.eu/
  * Author: Pronamic
- * Author URI: http://pronamic.nl
+ * Author URI: http://www.pronamic.eu/
  * Version: 1.0.0
- * Domain: woocommerce-twinfield
+ * Domain: twinfield_woocommerce
  */
 if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 

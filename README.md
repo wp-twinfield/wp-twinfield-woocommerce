@@ -1,12 +1,3 @@
-# WP WooCommerce Twinfield
+# Twinfield for WooCommerce
 
-WooCommerce Twinfield Integration. Requires the wp-orbis-twinfield plugin.
-
-## Usage
-
-COMING
-
-## Credits
-[Pronamic](http://pronamic.nl) [@pronamic](http://twitter.com/pronamic)
-
-[Leon Rowland](http://leon.rowland.nl) [@leonrowland](http://twitter.com/leonrowland)
+Twinfield plugin for WooCommerce, requires the [Twinfield](https://github.com/wp-twinfield/wp-twinfield) plugin.

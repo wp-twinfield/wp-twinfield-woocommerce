@@ -3,6 +3,6 @@
 	<description>A custom set of rules to check for the Twinfield WooCommerce plugin.</description>
 
 	<rule ref="WordPress">
-		
+		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 	</rule>
 </ruleset>

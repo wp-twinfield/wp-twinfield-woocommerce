@@ -1,6 +1,6 @@
 <?php
 
-class WoocommerceTwinfield_Integration extends WC_Integration {
+class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 	/**
 	 * Constructs and initialize an WooCommerce Twinfield integration class
 	 */
@@ -114,7 +114,7 @@ class WoocommerceTwinfield_Integration extends WC_Integration {
 }
 
 function add_woocommerce_twinfield_integration( $integrations ) {
-	$integrations[] = 'WoocommerceTwinfield_Integration';
+	$integrations[] = 'Pronamic_Twinfield_WooCommerce_Integration';
 	return $integrations;
 }
 

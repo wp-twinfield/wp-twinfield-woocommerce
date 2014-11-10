@@ -90,7 +90,7 @@ if ( ! class_exists( 'WooCommerceTwinfield' ) ) :
 		public function load_forms() {
 			// Makes an instance of WooCommerce Invoice
 			$woocommerce_invoice = new Woocommerce_Invoice();
-			$woocommerce_invoice->set_view( dirname( __FILE__ ) . '/views/woocommerce_invoice_form.php' );
+			$woocommerce_invoice->set_view( dirname( __FILE__ ) . '/admin/woocommerce-invoice-form.php' );
 
 			// Registers the woocommerce invoice form
 			\Pronamic\WP\Twinfield\FormBuilder\FormBuilderFactory::register_form( 'Woocommerce Invoice', $woocommerce_invoice );

@@ -23,22 +23,6 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 	private $order;
 
 	/**
-	 * Holds the customers ID. Has to be set
-	 * with the setter
-	 *
-	 * @var int
-	 */
-	private $customer_id;
-
-	/**
-	 * Holds the orders invoice type. For now
-	 * it defaults to `FACTUUR` you can overide
-	 * with the setter.
-	 * @var string
-	 */
-	private $invoice_type = 'FACTUUR';
-
-	/**
 	 * Holds the WC Order in the class for use when
 	 * fill_class is called.
 	 *
@@ -49,11 +33,8 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 	 * @param WC_Order $order OPTIONAL
 	 * @return void
 	 */
-	public function __construct( WC_Order $order = null, $customer_id = null, $invoice_id = null, $invoice_type = 'FACTUUR' ) {
-		$this->order        = $order;
-		$this->customer_id  = $customer_id;
-		$this->invoice_id   = $invoice_id;
-		$this->invoice_type = $invoice_type;
+	public function __construct( WC_Order $order = null ) {
+		$this->order = $order;
 	}
 
 	/**
@@ -132,9 +113,9 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
-		$fill_class_data['customerID']    = $this->customer_id;
-		$fill_class_data['invoiceType']   = $this->invoice_type;
-		$fill_class_data['invoiceNumber'] = $this->invoice_id;
+		$fill_class_data['customerID']    = get_post_meta( $order->id, '_twinfield_customer_id', true );
+		$fill_class_data['invoiceType']   = get_post_meta( $order->id, '_twinfield_invoice_type', true );
+		$fill_class_data['invoiceNumber'] = get_post_meta( $order->id, '_twinfield_invoice_number', true );
 
 		/////////
 		// Header
@@ -160,14 +141,14 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 		// Go through all the products and add the items order information
 		foreach ( $order_items as $item ) {
 			// Find and article and subarticle id if set
-			$article_id    = get_post_meta( $item['product_id'], '_twinfield_article_id', true );
-			$subarticle_id = get_post_meta( $item['product_id'], '_twinfield_subarticle_id', true );
+			$article_code    = get_post_meta( $item['product_id'], '_twinfield_article_code', true );
+			$subarticle_code = get_post_meta( $item['product_id'], '_twinfield_subarticle_code', true );
 
 			// Data for the lines
 			$fill_class_data['lines'][] = array(
 				'active'         => true,
-				'article'	     => $article_id,
-				'subarticle'     => $subarticle_id,
+				'article'	     => $article_code,
+				'subarticle'     => $subarticle_code,
 				'quantity'       => $item['qty'],
 				'unitspriceexcl' => $order->get_item_total( $item, false, false ),
 				'vatcode'        => 'VH',

@@ -17,6 +17,8 @@ you link to WooCommerce products. This allows the Twinfield WooCommerce plugin t
 Twinfield article price with the WooCommerce product price. This way your Twinfield article price don't
 have to correspond with your WooCommerce product price.
 
+![Twinfield edit Item](http://pronamic.nl/wp-content/uploads/2014/11/twinfield-article-edit.png)
+
 For each WooCommerce product you can specify an Twinfield article and subarticle code. If you enter
 an Twinfield article code for an WooCommerce product this code will be used to create the Twinfield invoice.
 If you leave the article and subarticle code fields empty then the article and subarticle code from

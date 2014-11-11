@@ -23,3 +23,7 @@ For each WooCommerce product you can specify an Twinfield article and subarticle
 an Twinfield article code for an WooCommerce product this code will be used to create the Twinfield invoice.
 If you leave the article and subarticle code fields empty then the article and subarticle code from
 the Twinfield settings page will be used.
+
+![WordPress Twinfield Article meta box](http://pronamic.nl/wp-content/uploads/2014/11/wp-twinfield-article-meta-box.png)
+
+![WordPress Twinfield Settings defaults](http://pronamic.nl/wp-content/uploads/2014/11/wp-twinfield-settings-defaults.png)

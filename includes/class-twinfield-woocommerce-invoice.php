@@ -111,10 +111,15 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 			$this->order = $order;
 		}
 
+		$invoice_type = get_post_meta( $order->id, '_twinfield_invoice_type', true );
+		if ( empty( $invoice_type ) ) {
+			$invoice_type = get_option( 'twinfield_default_invoice_type' );
+		}
+
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
 		$fill_class_data['customerID']    = get_post_meta( $order->id, '_twinfield_customer_id', true );
-		$fill_class_data['invoiceType']   = get_post_meta( $order->id, '_twinfield_invoice_type', true );
+		$fill_class_data['invoiceType']   = $invoice_type;
 		$fill_class_data['invoiceNumber'] = get_post_meta( $order->id, '_twinfield_invoice_number', true );
 
 		/////////
@@ -142,7 +147,14 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 		foreach ( $order_items as $item ) {
 			// Find and article and subarticle id if set
 			$article_code    = get_post_meta( $item['product_id'], '_twinfield_article_code', true );
+			if ( empty( $article_code ) ) {
+				$article_code = get_option( 'twinfield_default_article_code' );
+			}
+
 			$subarticle_code = get_post_meta( $item['product_id'], '_twinfield_subarticle_code', true );
+			if ( empty( $subarticle_code ) ) {
+				$subarticle_code = get_option( 'twinfield_default_subarticle_code' );
+			}
 
 			// Data for the lines
 			$fill_class_data['lines'][] = array(

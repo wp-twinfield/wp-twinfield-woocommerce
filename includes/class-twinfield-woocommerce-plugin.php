@@ -91,12 +91,4 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 
 		exit;
 	}
-
-	public function plugin_folder() {
-		return dirname( __FILE__ );
-	}
-
-	public function plugin_file() {
-		return __FILE__;
-	}
 }

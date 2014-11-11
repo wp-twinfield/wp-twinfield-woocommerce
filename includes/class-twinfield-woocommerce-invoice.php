@@ -50,9 +50,9 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 	 * @return void
 	 */
 	public function __construct( WC_Order $order = null, $customer_id = null, $invoice_id = null, $invoice_type = 'FACTUUR' ) {
-		$this->order = $order;
-		$this->customer_id = $customer_id;
-		$this->invoice_id = $invoice_id;
+		$this->order        = $order;
+		$this->customer_id  = $customer_id;
+		$this->invoice_id   = $invoice_id;
 		$this->invoice_type = $invoice_type;
 	}
 
@@ -132,9 +132,9 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
-		$fill_class_data['customerID']		 = $this->customer_id;
-		$fill_class_data['invoiceType']		 = $this->invoice_type;
-		$fill_class_data['invoiceNumber']	 = $this->invoice_id;
+		$fill_class_data['customerID']    = $this->customer_id;
+		$fill_class_data['invoiceType']   = $this->invoice_type;
+		$fill_class_data['invoiceNumber'] = $this->invoice_id;
 
 		/////////
 		// Header

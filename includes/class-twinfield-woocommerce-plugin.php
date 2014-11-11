@@ -25,7 +25,7 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 	}
 
 	public function plugins_loaded() {
-		if ( class_exists( 'Woocommerce' ) || class_exists( 'WooCommerce' ) ) {
+		if ( defined( 'WC_VERSION' ) ) {
 			$this->register_hooks();
 
 			load_plugin_textdomain( 'twinfield_woocommerce', false, dirname( plugin_basename( $this->file ) ) . '/languages/' );

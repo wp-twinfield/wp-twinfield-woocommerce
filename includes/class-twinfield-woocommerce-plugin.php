@@ -25,7 +25,11 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 	}
 
 	public function plugins_loaded() {
-		if ( defined( 'WC_VERSION' ) ) {
+		/*
+		 * WooCommerce version >= 2.1.0 = WC_VERSION          » https://github.com/woothemes/woocommerce/blob/v2.1.0/woocommerce.php#L255-L256
+		 * WooCommerce version <  2.1.0 = WOOCOMMERCE_VERSION » https://github.com/woothemes/woocommerce/blob/v2.0.20/woocommerce.php#L132-L133
+		 */
+		if ( defined( 'WOOCOMMERCE_VERSION' ) ) {
 			$this->register_hooks();
 
 			load_plugin_textdomain( 'twinfield_woocommerce', false, dirname( plugin_basename( $this->file ) ) . '/languages/' );

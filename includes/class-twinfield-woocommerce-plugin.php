@@ -52,43 +52,10 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 		add_post_type_support( 'product', 'twinfield_article' );
 		add_post_type_support( 'shop_order', 'twinfield_invoiceable' );
 
-		add_action( 'wp_twinfield_formbuilder_load_forms', array( $this, 'load_forms' ) );
-
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-
-		add_action( 'wp_ajax_woocommerce_twinfield_formbuilder_load_order', array( $this, 'ajax_load_order' ) );
-	}
-
-	/**
-	 * Registers the Woocommerce_Invoice class as a form for the
-	 * formbuilder factory.
-	 *
-	 * Sets the view for that form so it works in the formbuilder ui
-	 */
-	public function load_forms() {
-		// Makes an instance of WooCommerce Invoice
-		$woocommerce_invoice = new Pronamic_Twinfield_WooCommerce_Invoice();
-		$woocommerce_invoice->set_view( plugin_dir_path( $this->file ) . '/admin/woocommerce-invoice-form.php' );
-
-		// Registers the woocommerce invoice form
-		\Pronamic\WP\Twinfield\FormBuilder\FormBuilderFactory::register_form( 'Woocommerce Invoice', $woocommerce_invoice );
 	}
 
 	public function admin_init() {
 		\Pronamic\WP\Twinfield\Invoice\InvoiceMetaBoxFactory::register( 'shop_order', 'Pronamic_Twinfield_WooCommerce_InvoiceMetaBox' );
-	}
-
-	public function ajax_load_order() {
-		if ( ! filter_has_var( INPUT_POST, 'order_id' ) ) {
-			exit;
-		}
-
-		$wc_order = new WC_Order( filter_input( INPUT_POST, 'order_id', FILTER_SANITIZE_NUMBER_INT ) );
-
-		$woocommerce_invoice = new Pronamic_Twinfield_WooCommerce_Invoice( $wc_order, Pronamic_Twinfield_WooCommerce_Invoice::check_for_twinfield_customer_id( $wc_order->id ) );
-
-		echo json_encode( $woocommerce_invoice->prepare_invoice() );
-
-		exit;
 	}
 }

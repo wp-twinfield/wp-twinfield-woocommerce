@@ -59,40 +59,6 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 	}
 
 	/**
-	 * Sets some extra variables for the FormBuilder UI.
-	 *
-	 * Currently sets a key of 'orders' that hold all
-	 * the orders in WooCommerce.
-	 *
-	 * @overide
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function prepare_extra_variables() {
-		parent::prepare_extra_variables();
-
-		$all_orders = $this->get_all_orders();
-		$this->set_extra_variables( 'orders', $all_orders );
-	}
-
-	/**
-	 * Called from inside prepare_extra_variables that gives back the
-	 * array of all orders
-	 *
-	 * @access public
-	 * @return array
-	 */
-	public function get_all_orders() {
-		$orders_query = new WP_Query( array(
-			'post_type'      => 'shop_order',
-			'posts_per_page' => -1,
-		) );
-
-		return $orders_query->posts;
-	}
-
-	/**
 	 * Maps the WC_Order to the required array for the fill_class method
 	 *
 	 * Is called from this child classes fill_class method, where if the

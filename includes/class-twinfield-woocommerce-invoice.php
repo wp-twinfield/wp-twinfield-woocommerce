@@ -111,15 +111,10 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 			$this->order = $order;
 		}
 
-		$invoice_type = get_post_meta( $order->id, '_twinfield_invoice_type', true );
-		if ( empty( $invoice_type ) ) {
-			$invoice_type = get_option( 'twinfield_default_invoice_type' );
-		}
-
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
 		$fill_class_data['customerID']    = get_post_meta( $order->id, '_twinfield_customer_id', true );
-		$fill_class_data['invoiceType']   = $invoice_type;
+		$fill_class_data['invoiceType']   = get_option( 'twinfield_default_invoice_type' );
 		$fill_class_data['invoiceNumber'] = get_post_meta( $order->id, '_twinfield_invoice_number', true );
 
 		/////////

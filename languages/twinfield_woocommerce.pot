@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Twinfield WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: "
-"http://wordpress.org/support/plugin/woocommerce-twinfield\n"
-"POT-Creation-Date: 2014-11-10 13:25:35+00:00\n"
+"http://wordpress.org/support/plugin/twinfield-woocommerce\n"
+"POT-Creation-Date: 2014-11-13 14:59:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,115 +14,110 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.4.9\n"
 
-#: lib/class-woocommerce-invoice.php:143
-msgid "Invoice created by WooCommerce"
-msgstr ""
-
-#: lib/class-woocommerce-invoice.php:154
-msgid "%d items ordered: "
-msgstr ""
-
-#: lib/class-woocommerce-invoice.php:196
-msgid "Shipping cost: %s"
-msgstr ""
-
-#: lib/class-woocommerce-invoice.php:225
-msgid "Cart Discount: %s"
-msgstr ""
-
-#: lib/class-woocommerce-invoice.php:227
-msgid "Order Discount: %s"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:9
-msgid "Twinfield"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:28
-msgid "Discount"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:32
-#: lib/class-woocommercetwinfield-integration.php:54
-msgid "Article ID"
-msgstr ""
-
-#: lib/class-woocommercetwinfield-integration.php:36
-#: lib/class-woocommercetwinfield-integration.php:59
-msgid "Subarticle ID"
-msgstr ""
-
-#: views/woocommerce_invoice_form.php:59
+#: admin/woocommerce-invoice-form.php:60
 msgid "Invoice Form"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:64
+#: admin/woocommerce-invoice-form.php:65
 msgid "Load WooCommerce Order"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:71
+#: admin/woocommerce-invoice-form.php:75
 msgid "Load"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:75
+#: admin/woocommerce-invoice-form.php:79
 msgid "Invoice Number"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:81
+#: admin/woocommerce-invoice-form.php:85
 msgid "Invoice Type"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:87
-#: views/woocommerce_invoice_meta_box_view.php:22
+#: admin/woocommerce-invoice-form.php:91
 msgid "Customer ID"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:96
+#: admin/woocommerce-invoice-form.php:102
 msgid "Article"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:97
+#: admin/woocommerce-invoice-form.php:103
 msgid "Subarticle"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:98
+#: admin/woocommerce-invoice-form.php:104
 msgid "Quantity"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:99
+#: admin/woocommerce-invoice-form.php:105
 msgid "Units"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:100
+#: admin/woocommerce-invoice-form.php:106
 msgid "Units Excl"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:101
+#: admin/woocommerce-invoice-form.php:107
 msgid "Vatcode"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:102
+#: admin/woocommerce-invoice-form.php:108
 msgid "Free Text 1"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:103
+#: admin/woocommerce-invoice-form.php:109
 msgid "Free Text 2"
 msgstr ""
 
-#: views/woocommerce_invoice_form.php:104
+#: admin/woocommerce-invoice-form.php:110
 msgid "Free Text 3"
 msgstr ""
 
-#: views/woocommerce_invoice_meta_box_view.php:16
-msgid "Twinfield Invoice ID"
+#: includes/class-twinfield-woocommerce-integration.php:9
+msgid "Twinfield"
 msgstr ""
 
-#: views/woocommerce_invoice_meta_box_view.php:26
-msgid "View"
+#: includes/class-twinfield-woocommerce-integration.php:28
+msgid "Discount"
 msgstr ""
 
-#: views/woocommerce_invoice_meta_box_view.php:28
-msgid "Sync"
+#: includes/class-twinfield-woocommerce-integration.php:32
+#: includes/class-twinfield-woocommerce-integration.php:54
+msgid "Article ID"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-integration.php:36
+#: includes/class-twinfield-woocommerce-integration.php:59
+msgid "Subarticle ID"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-integration.php:67
+msgid "Standard Rates"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-integration.php:85
+msgid "VAT Code"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-invoice.php:90
+msgid "Invoice created by WooCommerce"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-invoice.php:101
+msgid "%d items ordered: "
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-invoice.php:147
+msgid "Shipping cost: %s"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-invoice.php:177
+msgid "Cart Discount: %s"
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-invoice.php:179
+msgid "Order Discount: %s"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -145,7 +140,12 @@ msgstr ""
 msgid "http://www.pronamic.eu/"
 msgstr ""
 
-#: lib/class-woocommerce-invoice.php:181
+#: includes/class-twinfield-woocommerce-integration.php:87
+msgctxt "twinfield.com"
+msgid "You can find your VAT codes in Twinfield under \"General » Company » VAT\"."
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-invoice.php:132
 msgctxt "[Quantity] [Product Name] at [Price]"
 msgid "----- %d %s at %s"
 msgstr ""

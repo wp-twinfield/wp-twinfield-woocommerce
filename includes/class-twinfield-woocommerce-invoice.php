@@ -77,6 +77,9 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 			$this->order = $order;
 		}
 
+		// Twinfield WooCommerce integration
+		$twinfield_integration = WC()->integrations->integrations['twinfield'];
+
 		// Array for holding data for fill_class() method
 		$fill_class_data = array();
 		$fill_class_data['customerID']    = get_post_meta( $order->id, '_twinfield_customer_id', true );
@@ -124,8 +127,9 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 				'subarticle'     => $subarticle_code,
 				'quantity'       => $item['qty'],
 				'unitspriceexcl' => $order->get_item_total( $item, false, false ),
-				'vatcode'        => 'VH',
-				'freetext1'      => $order->get_line_tax( $item )
+				'vatcode'        => $twinfield_integration->get_tax_class_vat_code( $item['tax_class'] ),
+				'freetext1'      => $item['name'],
+				'freetext2'      => $order->get_line_tax( $item ),
 			);
 
 			$explanation_text .= sprintf(
@@ -142,35 +146,69 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 		// Shipping
 		////////
 
-		if ( '0.00' != $order->get_shipping_tax() ) {
-			// Add line to explanation
-			$explanation_text .= sprintf( __( 'Shipping cost: %s', 'twinfield_woocommerce' ), $order->get_shipping_tax() );
-			$explanation_text .= "\r\n";
+		// @see https://github.com/woothemes/woocommerce/blob/2.2.8/includes/class-wc-tax.php#L364-L504
+		$line_items_shipping = $order->get_items( 'shipping' );
 
-			// Get shipping article/subarticle
-			$shipping_article_id = Pronamic_Twinfield_WooCommerce_Integration::get_shipping_article_id( $order->shipping_method );
-			$shipping_subarticle_id = Pronamic_Twinfield_WooCommerce_Integration::get_shipping_subarticle_id( $order->shipping_method );
+		$shipping_tax_class = get_option( 'woocommerce_shipping_tax_class' );
 
-			$shipping_line = array(
-				'active'         => true,
-				'article'        => $shipping_article_id,
-				'subarticle'     => ( isset( $shipping_subarticle_id ) ? $shipping_subarticle_id : '' ),
-				'quantity'       => 1,
-				'unitspriceexcl' => $order->get_shipping_tax(),
-				'vatcode'        => 'VN',
-			);
+		if ( '' == $shipping_tax_class ) {
+			$tax_classes = array();
 
-			if ( Pronamic_Twinfield_WooCommerce_Integration::add_shipping_method_to_freetext() ) {
-				$shipping_line['freetext1'] = $order->get_shipping_method();
+			foreach ( $this->order->get_items() as $item ) {
+				$tax_classes[] = $item['tax_class'];
 			}
 
-			// Shipping Fees
-			$fill_class_data['lines'][] = $shipping_line;
+			$tax_classes = array_unique( $tax_classes );
+
+			global $wpdb;
+
+			$query = "
+				SELECT tax_rate_class
+				FROM {$wpdb->prefix}woocommerce_tax_rates
+				WHERE tax_rate_class IN ('" . implode( "','", $tax_classes ) . "')
+				ORDER BY tax_rate
+				LIMIT 1
+				;";
+
+			$tax_class = $wpdb->get_var( $query );
+
+			$shipping_tax_class = $tax_class;
+		}
+
+		$vat_code = $twinfield_integration->get_tax_class_vat_code( $shipping_tax_class );
+
+		foreach ( $line_items_shipping as $item ) {
+			$shipping_taxes = isset( $item['taxes'] ) ? $item['taxes'] : '';
+			$tax_data       = maybe_unserialize( $shipping_taxes );
+
+			$fill_class_data['lines'][] = array(
+				'active'         => true,
+				'article'        => $twinfield_integration->get_shipping_method_article_code( $item['method_id'] ),
+				'subarticle'     => $twinfield_integration->get_shipping_method_subarticle_code( $item['method_id'] ),
+				'quantity'       => 1,
+				'unitspriceexcl' => $item['cost'],
+				'vatcode'        => $vat_code,
+				'freetext1'      => $item['name'],
+			);
 		}
 
 		///////
-		// Discounts
+		// Fee
 		///////
+
+		/*
+		// @see https://github.com/woothemes/woocommerce/blob/2.2.8/includes/admin/meta-boxes/views/html-order-items.php#L121
+		$coupons = $order->get_items( array( 'coupon' ) );
+
+		foreach ( $coupons as $item_id => $item ) {
+			$post_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_title = %s AND post_type = 'shop_coupon' AND post_status = 'publish' LIMIT 1;", $item['name'] ) );
+
+			var_dump( $post_id );
+			var_dump( $item_id );
+			var_dump( $item );
+		}
+
+		var_dump( $coupons );exit;
 
 		if ( '0.00' != $order->get_order_discount() || '0.00' != $order->get_cart_discount() ) {
 			// Add line to explanation
@@ -195,6 +233,7 @@ class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\Form
 			// Discounts
 			$fill_class_data['lines'][] = $discount_line;
 		}
+		*/
 
 		/////////
 		// Finalization

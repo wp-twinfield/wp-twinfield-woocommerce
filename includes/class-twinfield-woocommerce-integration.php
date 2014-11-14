@@ -11,18 +11,33 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		$this->init_form_fields();
 		$this->init_settings();
 
-		$this->discount_article_id    = $this->get_option( 'discount_article_id' );
-		$this->discount_subarticle_id = $this->get_option( 'discount_subarticle_id' );
-		$this->shipping_article_id    = $this->get_option( 'shipping_article_id' );
-		$this->shipping_subarticle_id = $this->get_option( 'shipping_subarticle_id' );
-
 		add_action( 'woocommerce_update_options_integration_twinfield', array( $this, 'process_admin_options' ) );
 	}
 
-	private function get_field_name( $key ) {
-		return $this->plugin_id . $this->id . '_' . $key;
+	//////////////////////////////////////////////////
+
+	/**
+	 * Initialize form fields
+	 */
+	public function init_form_fields() {
+		$this->form_fields = array(
+			'shipping_method_article_codes' => array(
+				'type'        => 'twinfield_codes',
+			),
+			'shipping_method_subarticle_codes' => array(
+				'type'        => 'twinfield_codes',
+			),
+			'tax_classes_vat_codes' => array(
+				'type'        => 'twinfield_codes',
+			),
+		);
 	}
 
+	//////////////////////////////////////////////////
+
+	/**
+	 * Admin options
+	 */
 	public function admin_options() {
 		parent::admin_options();
 
@@ -30,6 +45,76 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		$this->output_shipping_methods();
 		$this->output_tax_rates_vat_codes();
 	}
+
+	//////////////////////////////////////////////////
+
+	/**
+	 * Helper function for the custom fields
+	 *
+	 * @param string $key
+	 * @return string
+	 */
+	private function get_field_name( $key ) {
+		return $this->plugin_id . $this->id . '_' . $key;
+	}
+
+	//////////////////////////////////////////////////
+	// Helper functions
+	//////////////////////////////////////////////////
+
+	public function get_tax_class_vat_code( $tax_class ) {
+		$vat_code = null;
+
+		$tax_class = empty( $tax_class ) ? 'standard' : $tax_class;
+
+		$tax_classes_vat_codes = $this->get_option( 'tax_classes_vat_codes' );
+
+		if ( isset( $tax_classes_vat_codes[ $tax_class ] ) ) {
+			$vat_code = $tax_classes_vat_codes[ $tax_class ];
+		}
+
+		if ( empty( $vat_code ) ) {
+			$vat_code = get_option( 'twinfield_default_vat_code' );
+		}
+
+		return $vat_code;
+	}
+
+	public function get_shipping_method_article_code( $method_id ) {
+		$article_code = null;
+
+		$shipping_method_article_codes = $this->get_option( 'shipping_method_article_codes' );
+
+		if ( isset( $shipping_method_article_codes[ $method_id ] ) ) {
+			$article_code = $shipping_method_article_codes[ $method_id ];
+		}
+
+		if ( empty( $article_code ) ) {
+			$article_code = get_option( 'twinfield_default_article_code' );
+		}
+
+		return $article_code;
+	}
+
+	public function get_shipping_method_subarticle_code( $method_id ) {
+		$article_code = null;
+
+		$shipping_method_article_codes = $this->get_option( 'shipping_method_subarticle_codes' );
+
+		if ( isset( $shipping_method_article_codes[ $method_id ] ) ) {
+			$article_code = $shipping_method_article_codes[ $method_id ];
+		}
+
+		if ( empty( $article_code ) ) {
+			$article_code = get_option( 'twinfield_default_subarticle_code' );
+		}
+
+		return $article_code;
+	}
+
+	//////////////////////////////////////////////////
+	// Custom form fields function
+	//////////////////////////////////////////////////
 
 	public function generate_twinfield_codes_html() {
 
@@ -55,7 +140,7 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		$shipping_method_subarticle_codes = $this->get_option( 'shipping_method_subarticle_codes' );
 
 		?>
-		<h4>Shipping Methods</h4>
+		<h4><?php _e( 'Shipping Methods', 'twinfield_woocommerce' ); ?></h4>
 
 		<p>
 			<?php _ex( 'You can find your articles in Twinfield under "Credit management » Items".', 'twinfield.com', 'twinfield' ); ?>
@@ -64,9 +149,9 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th width="25%">Method</th>
-					<th>Article Code</th>
-					<th>Subarticle Code</th>
+					<th width="25%"><?php _e( 'Method', 'twinfield_woocommerce' ); ?></th>
+					<th><?php _e( 'Article Code', 'twinfield_woocommerce' ); ?></th>
+					<th><?php _e( 'Subarticle Code', 'twinfield_woocommerce' ); ?></th>
 				</tr>
 			</thead>
 
@@ -125,7 +210,7 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		$tax_classes_vat_codes = $this->get_option( 'tax_classes_vat_codes' );
 
 		?>
-		<h4>Tax Rates</h4>
+		<h4><?php _e( 'Tax Rates', 'twinfield_woocommerce' ); ?></h4>
 
 		<p>
 			<?php _ex( 'You can find your VAT codes in Twinfield under "General » Company » VAT".', 'twinfield.com', 'twinfield_woocommerce' ); ?>
@@ -134,8 +219,8 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th width="25%">Rates</th>
-					<th>VAT Code</th>
+					<th width="25%"><?php _e( 'Rates', 'twinfield_woocommerce' ); ?></th>
+					<th><?php _e( 'VAT Code', 'twinfield_woocommerce' ); ?></th>
 				</tr>
 			</thead>
 
@@ -160,94 +245,9 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 					</tr>
 
 				<?php endforeach; ?>
+
 			</tbody>
 		</table>
 		<?php
 	}
-
-	/**
-	 * Initialize form fields
-	 */
-	public function init_form_fields() {
-		$this->form_fields = array(
-			'twinfield_discount' => array(
-				'title'       => __( 'Discount', 'twinfield_woocommerce' ),
-				'type'        => 'title',
-			),
-			'discount_article_id' => array(
-				'title'       => __( 'Article ID', 'twinfield_woocommerce' ),
-				'type'        => 'text',
-			),
-			'discount_subarticle_id' => array(
-				'title'       => __( 'Subarticle ID', 'twinfield_woocommerce' ),
-				'type'        => 'text',
-			),
-			'shipping_method_article_codes' => array(
-				'type'        => 'twinfield_codes',
-			),
-			'shipping_method_subarticle_codes' => array(
-				'type'        => 'twinfield_codes',
-			),
-			'tax_classes_vat_codes' => array(
-				'type'        => 'twinfield_codes',
-			),
-		);
-	}
-
-	public static function get_twinfield_settings() {
-		return get_option( 'woocommerce_twinfield_settings', array() );
-	}
-
-	public static function get_discount_article_id() {
-		$settings = self::get_twinfield_settings();
-
-		return $settings['discount_article_id'];
-	}
-
-	public static function get_discount_subarticle_id() {
-		$settings = self::get_twinfield_settings();
-
-		return $settings['discount_subarticle_id'];
-	}
-
-	public static function get_shipping_article_id( $shipping_method ) {
-		$settings = self::get_twinfield_settings();
-
-		$key = 'shipping_article_id_method_' . $shipping_method;
-
-		if ( array_key_exists( $key, $settings ) ) {
-			return $settings[ $key ];
-		} else {
-			return false;
-		}
-	}
-
-	public static function get_shipping_subarticle_id( $shipping_method ) {
-		$settings = self::get_twinfield_settings();
-
-		$key = 'shipping_subarticle_id_method_' . $shipping_method;
-
-		if ( array_key_exists( $key, $settings ) ) {
-			return $settings[ $key ];
-		} else {
-			return false;
-		}
-	}
-
-	public static function add_shipping_method_to_freetext() {
-		$settings = self::get_twinfield_settings();
-
-		if ( array_key_exists( 'add_shipping_method_to_freetext', $settings ) ) {
-			return $settings['add_shipping_method_to_freetext'];
-		} else {
-			return false;
-		}
-	}
 }
-
-function add_woocommerce_twinfield_integration( $integrations ) {
-	$integrations[] = 'Pronamic_Twinfield_WooCommerce_Integration';
-	return $integrations;
-}
-
-add_filter( 'woocommerce_integrations', 'add_woocommerce_twinfield_integration' );

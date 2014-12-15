@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Twinfield WooCommerce
-Plugin URI: http://www.happywp.com/plugins/twinfield-woocommerce/
+Plugin URI: http://www.pronamic.eu/plugins/woocommerce-twinfield/
 Description: WordPress Twinfield plugin for WooCommerce.
 
 Version: 1.1.0

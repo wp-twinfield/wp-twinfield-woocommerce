@@ -174,13 +174,13 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 
 						?>
 						<td width="25%">
-							<?php echo $shipping_method->method_title; ?>
+							<?php echo esc_html( $shipping_method->method_title ); ?>
 						</td>
 						<td>
-							<input type="text" value="<?php echo esc_attr( $article_code ); ?>" name="<?php echo $this->get_field_name( 'shipping_method_article_codes' ); ?>[<?php echo esc_attr( $shipping_method->id ); ?>]" />
+							<input type="text" value="<?php echo esc_attr( $article_code ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'shipping_method_article_codes' ) ); ?>[<?php echo esc_attr( $shipping_method->id ); ?>]" />
 						</td>
 						<td>
-							<input type="text" value="<?php echo esc_attr( $subarticle_code ); ?>" name="<?php echo $this->get_field_name( 'shipping_method_subarticle_codes' ); ?>[<?php echo esc_attr( $shipping_method->id ); ?>]" />
+							<input type="text" value="<?php echo esc_attr( $subarticle_code ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'shipping_method_subarticle_codes' ) ); ?>[<?php echo esc_attr( $shipping_method->id ); ?>]" />
 						</td>
 					</tr>
 
@@ -198,7 +198,7 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 			'standard' => __( 'Standard Rates', 'woocommerce' )
 		);
 
-		$tax_classes = array_filter( array_map( 'trim', explode( "\n", get_option('woocommerce_tax_classes' ) ) ) );
+		$tax_classes = array_filter( array_map( 'trim', explode( "\n", get_option( 'woocommerce_tax_classes' ) ) ) );
 
 		if ( $tax_classes ) {
 			foreach ( $tax_classes as $class ) {
@@ -237,10 +237,10 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 
 						?>
 						<td width="25%">
-							<?php echo $label; ?>
+							<?php echo esc_html( $label ); ?>
 						</td>
 						<td>
-							<input type="text" value="<?php echo esc_attr( $vat_code ); ?>" name="<?php echo $this->get_field_name( 'tax_classes_vat_codes' ); ?>[<?php echo esc_attr( $key ); ?>]" />
+							<input type="text" value="<?php echo esc_attr( $vat_code ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tax_classes_vat_codes' ) ); ?>[<?php echo esc_attr( $key ); ?>]" />
 						</td>
 					</tr>
 

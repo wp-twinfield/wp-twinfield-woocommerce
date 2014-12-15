@@ -4,7 +4,7 @@ Plugin Name: Twinfield WooCommerce
 Plugin URI: http://www.happywp.com/plugins/twinfield-woocommerce/
 Description: WordPress Twinfield plugin for WooCommerce.
 
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 3.6
 
 Author: Pronamic

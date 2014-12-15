@@ -2,10 +2,10 @@
 # This file is distributed under the GPL.
 msgid ""
 msgstr ""
-"Project-Id-Version: Twinfield WooCommerce 1.0.0\n"
+"Project-Id-Version: Twinfield WooCommerce 1.1.0\n"
 "Report-Msgid-Bugs-To: "
 "http://wordpress.org/support/plugin/twinfield-woocommerce\n"
-"POT-Creation-Date: 2014-11-14 14:24:44+00:00\n"
+"POT-Creation-Date: 2014-12-15 11:20:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"

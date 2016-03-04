@@ -22,13 +22,13 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'shipping_method_article_codes' => array(
-				'type'        => 'twinfield_codes',
+				'type' => 'twinfield_codes',
 			),
 			'shipping_method_subarticle_codes' => array(
-				'type'        => 'twinfield_codes',
+				'type' => 'twinfield_codes',
 			),
 			'tax_classes_vat_codes' => array(
-				'type'        => 'twinfield_codes',
+				'type' => 'twinfield_codes',
 			),
 		);
 	}

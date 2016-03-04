@@ -13,7 +13,7 @@
  * @version 1.0.0
  */
 
-class Pronamic_Twinfield_WooCommerce_Invoice extends \Pronamic\WP\Twinfield\FormBuilder\Form\Invoice {
+class Pronamic_Twinfield_WooCommerce_Invoice {
 	/**
 	 * Holds the passed in WC_Order instance
 	 * from instantiation

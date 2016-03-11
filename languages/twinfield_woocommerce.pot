@@ -1,121 +1,65 @@
-# Copyright (C) 2014 Pronamic
+# Copyright (C) 2016 Pronamic
 # This file is distributed under the GPL.
 msgid ""
 msgstr ""
-"Project-Id-Version: Twinfield WooCommerce 1.1.0\n"
+"Project-Id-Version: Twinfield WooCommerce 1.1.1\n"
 "Report-Msgid-Bugs-To: "
-"http://wordpress.org/support/plugin/twinfield-woocommerce\n"
-"POT-Creation-Date: 2014-12-15 11:20:50+00:00\n"
+"https://wordpress.org/support/plugin/twinfield-woocommerce\n"
+"POT-Creation-Date: 2016-03-11 12:37:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.4.9\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
 
-#: admin/woocommerce-invoice-form.php:60
-msgid "Invoice Form"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:65
-msgid "Load WooCommerce Order"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:75
-msgid "Load"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:79
-msgid "Invoice Number"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:85
-msgid "Invoice Type"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:91
-msgid "Customer ID"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:102
-msgid "Article"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:103
-msgid "Subarticle"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:104
-msgid "Quantity"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:105
-msgid "Units"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:106
-msgid "Units Excl"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:107
-msgid "Vatcode"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:108
-msgid "Free Text 1"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:109
-msgid "Free Text 2"
-msgstr ""
-
-#: admin/woocommerce-invoice-form.php:110
-msgid "Free Text 3"
-msgstr ""
-
-#: includes/class-twinfield-woocommerce-integration.php:9
+#: includes/class-twinfield-woocommerce-integration.php:18
 msgid "Twinfield"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:143
+#: includes/class-twinfield-woocommerce-integration.php:152
 msgid "Shipping Methods"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:152
+#: includes/class-twinfield-woocommerce-integration.php:155
+msgid "You can find your articles in Twinfield under \"Credit management » Items\"."
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-integration.php:161
 msgid "Method"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:153
+#: includes/class-twinfield-woocommerce-integration.php:162
 msgid "Article Code"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:154
+#: includes/class-twinfield-woocommerce-integration.php:163
 msgid "Subarticle Code"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:198
+#: includes/class-twinfield-woocommerce-integration.php:207
 msgid "Standard Rates"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:213
+#: includes/class-twinfield-woocommerce-integration.php:222
 msgid "Tax Rates"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:222
+#: includes/class-twinfield-woocommerce-integration.php:225
+msgid "You can find your VAT codes in Twinfield under \"General » Company » VAT\"."
+msgstr ""
+
+#: includes/class-twinfield-woocommerce-integration.php:231
 msgid "Rates"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-integration.php:223
+#: includes/class-twinfield-woocommerce-integration.php:232
 msgid "VAT Code"
 msgstr ""
 
-#: includes/class-twinfield-woocommerce-invoice.php:93
-msgid "Invoice created by WooCommerce"
-msgstr ""
-
-#: includes/class-twinfield-woocommerce-invoice.php:104
-msgid "%d items ordered: "
+#: includes/class-twinfield-woocommerce-plugin.php:118
+msgid "Fee"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -123,7 +67,7 @@ msgid "Twinfield WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.happywp.com/plugins/twinfield-woocommerce/"
+msgid "http://www.pronamic.eu/plugins/woocommerce-twinfield/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -136,19 +80,4 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://www.pronamic.eu/"
-msgstr ""
-
-#: includes/class-twinfield-woocommerce-integration.php:146
-msgctxt "twinfield.com"
-msgid "You can find your articles in Twinfield under \"Credit management » Items\"."
-msgstr ""
-
-#: includes/class-twinfield-woocommerce-integration.php:216
-msgctxt "twinfield.com"
-msgid "You can find your VAT codes in Twinfield under \"General » Company » VAT\"."
-msgstr ""
-
-#: includes/class-twinfield-woocommerce-invoice.php:136
-msgctxt "[Quantity] [Product Name] at [Price]"
-msgid "----- %d %s at %s"
 msgstr ""

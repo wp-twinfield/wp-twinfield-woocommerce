@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Title: Twinfield WooCommerce integration
+ * Description:
+ * Copyright: Copyright (c) 2005 - 2014
+ * Company: Pronamic
+ *
+ * @author Remco Tolsma
+ * @version 1.0.0
+ */
 class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 	/**
 	 * Constructs and initialize an WooCommerce Twinfield integration class
@@ -22,13 +31,13 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'shipping_method_article_codes' => array(
-				'type'        => 'twinfield_codes',
+				'type' => 'twinfield_codes',
 			),
 			'shipping_method_subarticle_codes' => array(
-				'type'        => 'twinfield_codes',
+				'type' => 'twinfield_codes',
 			),
 			'tax_classes_vat_codes' => array(
-				'type'        => 'twinfield_codes',
+				'type' => 'twinfield_codes',
 			),
 		);
 	}
@@ -140,18 +149,18 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		$shipping_method_subarticle_codes = $this->get_option( 'shipping_method_subarticle_codes' );
 
 		?>
-		<h4><?php _e( 'Shipping Methods', 'twinfield_woocommerce' ); ?></h4>
+		<h4><?php esc_html_e( 'Shipping Methods', 'twinfield_woocommerce' ); ?></h4>
 
 		<p>
-			<?php _ex( 'You can find your articles in Twinfield under "Credit management » Items".', 'twinfield.com', 'twinfield' ); ?>
+			<?php esc_html_e( 'You can find your articles in Twinfield under "Credit management » Items".', 'twinfield' ); ?>
 		</p>
 
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th width="25%"><?php _e( 'Method', 'twinfield_woocommerce' ); ?></th>
-					<th><?php _e( 'Article Code', 'twinfield_woocommerce' ); ?></th>
-					<th><?php _e( 'Subarticle Code', 'twinfield_woocommerce' ); ?></th>
+					<th width="25%"><?php esc_html_e( 'Method', 'twinfield_woocommerce' ); ?></th>
+					<th><?php esc_html_e( 'Article Code', 'twinfield_woocommerce' ); ?></th>
+					<th><?php esc_html_e( 'Subarticle Code', 'twinfield_woocommerce' ); ?></th>
 				</tr>
 			</thead>
 
@@ -195,7 +204,7 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		// Tax classes
 		// @see https://github.com/woothemes/woocommerce/blob/v2.2.3/includes/admin/settings/class-wc-settings-tax.php#L45-L52
 		$sections = array(
-			'standard' => __( 'Standard Rates', 'woocommerce' )
+			'standard' => __( 'Standard Rates', 'woocommerce' ),
 		);
 
 		$tax_classes = array_filter( array_map( 'trim', explode( "\n", get_option( 'woocommerce_tax_classes' ) ) ) );
@@ -210,17 +219,17 @@ class Pronamic_Twinfield_WooCommerce_Integration extends WC_Integration {
 		$tax_classes_vat_codes = $this->get_option( 'tax_classes_vat_codes' );
 
 		?>
-		<h4><?php _e( 'Tax Rates', 'twinfield_woocommerce' ); ?></h4>
+		<h4><?php esc_html_e( 'Tax Rates', 'twinfield_woocommerce' ); ?></h4>
 
 		<p>
-			<?php _ex( 'You can find your VAT codes in Twinfield under "General » Company » VAT".', 'twinfield.com', 'twinfield_woocommerce' ); ?>
+			<?php esc_html_e( 'You can find your VAT codes in Twinfield under "General » Company » VAT".', 'twinfield_woocommerce' ); ?>
 		</p>
 
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th width="25%"><?php _e( 'Rates', 'twinfield_woocommerce' ); ?></th>
-					<th><?php _e( 'VAT Code', 'twinfield_woocommerce' ); ?></th>
+					<th width="25%"><?php esc_html_e( 'Rates', 'twinfield_woocommerce' ); ?></th>
+					<th><?php esc_html_e( 'VAT Code', 'twinfield_woocommerce' ); ?></th>
 				</tr>
 			</thead>
 

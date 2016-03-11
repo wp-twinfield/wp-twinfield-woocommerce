@@ -74,48 +74,62 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 			// Integration
 			$twinfield_integration = WC()->integrations->integrations['twinfield'];
 
+			$twinfield_default_article_code    = get_option( 'twinfield_default_article_code' );
+			$twinfield_default_subarticle_code = get_option( 'twinfield_default_subarticle_code' );
+
 			// Order
 			$order = wc_get_order( $post_id );
 
 			// Items
 			// @see https://github.com/woothemes/woocommerce/blob/2.5.3/includes/abstracts/abstract-wc-order.php#L1118-L1150
-			$types = array( 'line_item', 'fee' );
-
-			foreach ( $order->get_items( $types ) as $item ) {
+			foreach ( $order->get_items() as $item ) {
 				$line = $invoice->new_line();
 
 				// Find and article and subarticle id if set
 				$article_code    = get_post_meta( $item['product_id'], '_twinfield_article_code', true );
 				if ( empty( $article_code ) ) {
-					$article_code = get_option( 'twinfield_default_article_code' );
+					$article_code = $twinfield_default_article_code;
 				}
 
 				$subarticle_code = get_post_meta( $item['product_id'], '_twinfield_subarticle_code', true );
 				if ( empty( $subarticle_code ) ) {
-					$subarticle_code = get_option( 'twinfield_default_subarticle_code' );
+					$subarticle_code = $twinfield_default_subarticle_code;
 				}
-
 
 				$line->set_article( $article_code );
 				$line->set_subarticle( $subarticle_code );
-				$line->set_quantity( $item['qty'] );
+				$line->set_quantity( $item['qty'] );	
 				$line->set_value_excl( $order->get_item_total( $item, false, false ) );
+				$line->set_free_text_1( $item['name'] );
 				// $line->set_vat_value( $order->get_line_tax( $item ) );
 				// $line->set_vat_code( $twinfield_integration->get_tax_class_vat_code( $item['tax_class'] ) );
-				
-				switch ( $item['type'] ) {
-					case 'line_item' :
-						$line->set_free_text_1( $item['name'] );
-						
-						break;
-					case 'fee' :
-						$line->set_free_text_1( __( 'Fee', 'twinfield_woocommerce' ) );
-
-						break;
-				}
 			}
 
-			var_dump( $invoice );
+			// Fees
+			// @see https://github.com/woothemes/woocommerce/blob/2.5.3/includes/abstracts/abstract-wc-order.php#L1221-L1228
+			foreach ( $order->get_fees() as $item ) {
+				$line = $invoice->new_line();
+
+				$line->set_article( $twinfield_default_article_code );
+				$line->set_subarticle( $twinfield_default_subarticle_code );
+				$line->set_quantity( 1 );
+				$line->set_value_excl( $order->get_item_total( $item, false, false ) );
+				$line->set_free_text_1( __( 'Fee', 'twinfield_woocommerce' ) );
+			}
+
+			// Shipping
+			// @see https://github.com/woothemes/woocommerce/blob/2.5.3/includes/abstracts/abstract-wc-order.php#L1239-L1246
+			foreach ( $order->get_shipping_methods() as $item ) {
+				$line = $invoice->new_line();
+
+				$line->set_article( $twinfield_integration->get_shipping_method_article_code( $item['method_id'] ) );
+				$line->set_subarticle( $twinfield_integration->get_shipping_method_subarticle_code( $item['method_id'] ) );
+				$line->set_quantity( 1 );
+				$line->set_value_excl( $item['cost'] );
+				$line->set_free_text_1( $item['name'] );
+
+				var_dump( $item );
+			}
 		}
 
 		return $invoice;

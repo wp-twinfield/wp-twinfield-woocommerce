@@ -5,6 +5,7 @@
  * Description:
  * Copyright: Copyright (c) 2005 - 2014
  * Company: Pronamic
+ *
  * @author Remco Tolsma
  * @version 1.0.0
  */
@@ -98,7 +99,7 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 
 				$line->set_article( $article_code );
 				$line->set_subarticle( $subarticle_code );
-				$line->set_quantity( $item['qty'] );	
+				$line->set_quantity( $item['qty'] );
 				$line->set_value_excl( $order->get_item_total( $item, false, false ) );
 				$line->set_free_text_1( $item['name'] );
 				// $line->set_vat_value( $order->get_line_tax( $item ) );
@@ -127,8 +128,6 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 				$line->set_quantity( 1 );
 				$line->set_value_excl( $item['cost'] );
 				$line->set_free_text_1( $item['name'] );
-
-				var_dump( $item );
 			}
 		}
 

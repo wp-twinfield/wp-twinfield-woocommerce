@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce Twinfield\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/twinfield-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/twinfield-"
 "woocommerce\n"
-"POT-Creation-Date: 2014-12-15 11:20:50+00:00\n"
-"PO-Revision-Date: 2014-12-15 12:22+0100\n"
+"POT-Creation-Date: 2016-03-11 12:37:49+00:00\n"
+"PO-Revision-Date: 2016-03-11 13:38+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -12,121 +12,70 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: admin/woocommerce-invoice-form.php:60
-msgid "Invoice Form"
-msgstr "Factuur formulier"
-
-#: admin/woocommerce-invoice-form.php:65
-msgid "Load WooCommerce Order"
-msgstr "WooCommerce bestelling laden"
-
-#: admin/woocommerce-invoice-form.php:75
-msgid "Load"
-msgstr "Laden"
-
-#: admin/woocommerce-invoice-form.php:79
-msgid "Invoice Number"
-msgstr "Factuurnummer"
-
-#: admin/woocommerce-invoice-form.php:85
-msgid "Invoice Type"
-msgstr "Factuur type"
-
-#: admin/woocommerce-invoice-form.php:91
-msgid "Customer ID"
-msgstr "Klant ID"
-
-#: admin/woocommerce-invoice-form.php:102
-msgid "Article"
-msgstr "Artikel"
-
-#: admin/woocommerce-invoice-form.php:103
-msgid "Subarticle"
-msgstr "Subartikel"
-
-#: admin/woocommerce-invoice-form.php:104
-msgid "Quantity"
-msgstr "Aantal"
-
-#: admin/woocommerce-invoice-form.php:105
-msgid "Units"
-msgstr "Eenheid"
-
-#: admin/woocommerce-invoice-form.php:106
-msgid "Units Excl"
-msgstr "Eenheid excl."
-
-#: admin/woocommerce-invoice-form.php:107
-msgid "Vatcode"
-msgstr "BTW-code"
-
-#: admin/woocommerce-invoice-form.php:108
-msgid "Free Text 1"
-msgstr "Vrije tekst 1"
-
-#: admin/woocommerce-invoice-form.php:109
-msgid "Free Text 2"
-msgstr "Vrije tekst 2"
-
-#: admin/woocommerce-invoice-form.php:110
-msgid "Free Text 3"
-msgstr "Vrije tekst 3"
-
-#: includes/class-twinfield-woocommerce-integration.php:9
+#: includes/class-twinfield-woocommerce-integration.php:18
 msgid "Twinfield"
 msgstr "Twinfield"
 
-#: includes/class-twinfield-woocommerce-integration.php:143
+#: includes/class-twinfield-woocommerce-integration.php:152
 msgid "Shipping Methods"
 msgstr "Verzendmethoden"
 
-#: includes/class-twinfield-woocommerce-integration.php:152
+#: includes/class-twinfield-woocommerce-integration.php:155
+msgid ""
+"You can find your articles in Twinfield under \"Credit management » Items\"."
+msgstr ""
+"Je kunt je artikelen in Twinfield vinden onder \"Facturatie » Artikelen\"."
+
+#: includes/class-twinfield-woocommerce-integration.php:161
 msgid "Method"
 msgstr "Methode"
 
-#: includes/class-twinfield-woocommerce-integration.php:153
+#: includes/class-twinfield-woocommerce-integration.php:162
 msgid "Article Code"
 msgstr "Artikel code"
 
-#: includes/class-twinfield-woocommerce-integration.php:154
+#: includes/class-twinfield-woocommerce-integration.php:163
 msgid "Subarticle Code"
 msgstr "Subartikel code"
 
-#: includes/class-twinfield-woocommerce-integration.php:198
+#: includes/class-twinfield-woocommerce-integration.php:207
 msgid "Standard Rates"
 msgstr "Standaardtarief"
 
-#: includes/class-twinfield-woocommerce-integration.php:213
+#: includes/class-twinfield-woocommerce-integration.php:222
 msgid "Tax Rates"
 msgstr "Belastingtarieven"
 
-#: includes/class-twinfield-woocommerce-integration.php:222
+#: includes/class-twinfield-woocommerce-integration.php:225
+msgid ""
+"You can find your VAT codes in Twinfield under \"General » Company » VAT\"."
+msgstr ""
+"Je kunt je BTW-codes in Twinfield vinden onder \"Algemeen » Administratie » "
+"Btw\"."
+
+#: includes/class-twinfield-woocommerce-integration.php:231
 msgid "Rates"
 msgstr "Tarieven"
 
-#: includes/class-twinfield-woocommerce-integration.php:223
+#: includes/class-twinfield-woocommerce-integration.php:232
 msgid "VAT Code"
 msgstr "BTW"
 
-#: includes/class-twinfield-woocommerce-invoice.php:93
-msgid "Invoice created by WooCommerce"
-msgstr "Factuur gemaakt door WooCommerce"
-
-#: includes/class-twinfield-woocommerce-invoice.php:104
-msgid "%d items ordered: "
-msgstr "%d items besteld: "
+#: includes/class-twinfield-woocommerce-plugin.php:118
+msgid "Fee"
+msgstr "Kosten"
 
 #. Plugin Name of the plugin/theme
 msgid "Twinfield WooCommerce"
 msgstr "Twinfield WooCommerce"
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.happywp.com/plugins/twinfield-woocommerce/"
-msgstr "http://www.happywp.com/plugins/twinfield-woocommerce/"
+msgid "http://www.pronamic.eu/plugins/woocommerce-twinfield/"
+msgstr "http://www.pronamic.eu/plugins/woocommerce-twinfield/"
 
 #. Description of the plugin/theme
 msgid "WordPress Twinfield plugin for WooCommerce."
@@ -140,25 +89,60 @@ msgstr "Pronamic"
 msgid "http://www.pronamic.eu/"
 msgstr "http://www.pronamic.nl/"
 
-#: includes/class-twinfield-woocommerce-integration.php:146
-msgctxt "twinfield.com"
-msgid ""
-"You can find your articles in Twinfield under \"Credit management » Items\"."
-msgstr ""
-"Je kunt je artikelen in Twinfield vinden onder \"Facturatie » Artikelen\"."
+#~ msgid "Invoice Form"
+#~ msgstr "Factuur formulier"
 
-#: includes/class-twinfield-woocommerce-integration.php:216
-msgctxt "twinfield.com"
-msgid ""
-"You can find your VAT codes in Twinfield under \"General » Company » VAT\"."
-msgstr ""
-"Je kunt je BTW-codes in Twinfield vinden onder \"Algemeen » Administratie » "
-"Btw\"."
+#~ msgid "Load WooCommerce Order"
+#~ msgstr "WooCommerce bestelling laden"
 
-#: includes/class-twinfield-woocommerce-invoice.php:136
-msgctxt "[Quantity] [Product Name] at [Price]"
-msgid "----- %d %s at %s"
-msgstr "----- %d %s voor %s"
+#~ msgid "Load"
+#~ msgstr "Laden"
+
+#~ msgid "Invoice Number"
+#~ msgstr "Factuurnummer"
+
+#~ msgid "Invoice Type"
+#~ msgstr "Factuur type"
+
+#~ msgid "Customer ID"
+#~ msgstr "Klant ID"
+
+#~ msgid "Article"
+#~ msgstr "Artikel"
+
+#~ msgid "Subarticle"
+#~ msgstr "Subartikel"
+
+#~ msgid "Quantity"
+#~ msgstr "Aantal"
+
+#~ msgid "Units"
+#~ msgstr "Eenheid"
+
+#~ msgid "Units Excl"
+#~ msgstr "Eenheid excl."
+
+#~ msgid "Vatcode"
+#~ msgstr "BTW-code"
+
+#~ msgid "Free Text 1"
+#~ msgstr "Vrije tekst 1"
+
+#~ msgid "Free Text 2"
+#~ msgstr "Vrije tekst 2"
+
+#~ msgid "Free Text 3"
+#~ msgstr "Vrije tekst 3"
+
+#~ msgid "Invoice created by WooCommerce"
+#~ msgstr "Factuur gemaakt door WooCommerce"
+
+#~ msgid "%d items ordered: "
+#~ msgstr "%d items besteld: "
+
+#~ msgctxt "[Quantity] [Product Name] at [Price]"
+#~ msgid "----- %d %s at %s"
+#~ msgstr "----- %d %s voor %s"
 
 #~ msgid "Discount"
 #~ msgstr "Korting"

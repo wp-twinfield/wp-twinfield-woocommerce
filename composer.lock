@@ -4,48 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c40fc298e291fc5ae80fb0d4cbbfebd",
-    "content-hash": "85373904adbffbee33dcdb399b24954a",
-    "packages": [
-        {
-            "name": "wp-twinfield/twinfield",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wp-twinfield/twinfield.git",
-                "reference": "55d8961fa47634ddb5ee6d2ee03e128bd15159b5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wp-twinfield/twinfield/zipball/55d8961fa47634ddb5ee6d2ee03e128bd15159b5",
-                "reference": "55d8961fa47634ddb5ee6d2ee03e128bd15159b5",
-                "shasum": ""
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "dev-master",
-                "sensiolabs/security-checker": "dev-master",
-                "squizlabs/php_codesniffer": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Pronamic\\WP\\Twinfield\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Pronamic",
-                    "email": "info@pronamic.eu"
-                }
-            ],
-            "description": "Twinfield library for WordPress.",
-            "time": "2015-10-30 20:16:03"
-        }
-    ],
+    "hash": "49e8c8bebc9b289b0c3a3a50305e8d59",
+    "content-hash": "b12f5d305f568f8a850a8039edf1b148",
+    "packages": [],
     "packages-dev": [
         {
             "name": "guzzlehttp/guzzle",
@@ -691,7 +652,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wp-twinfield/twinfield": 20,
         "satooshi/php-coveralls": 20
     },
     "prefer-stable": false,

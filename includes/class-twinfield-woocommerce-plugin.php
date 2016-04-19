@@ -100,10 +100,9 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 				$line->set_article( $article_code );
 				$line->set_subarticle( $subarticle_code );
 				$line->set_quantity( $item['qty'] );
-				$line->set_value_excl( $order->get_item_total( $item, false, false ) );
+				$line->set_units_price_excl( $order->get_item_total( $item, false, false ) );
+				$line->set_vat_code( $twinfield_integration->get_tax_class_vat_code( $item['tax_class'] ) );
 				$line->set_free_text_1( $item['name'] );
-				// $line->set_vat_value( $order->get_line_tax( $item ) );
-				// $line->set_vat_code( $twinfield_integration->get_tax_class_vat_code( $item['tax_class'] ) );
 			}
 
 			// Fees
@@ -114,7 +113,7 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 				$line->set_article( $twinfield_default_article_code );
 				$line->set_subarticle( $twinfield_default_subarticle_code );
 				$line->set_quantity( 1 );
-				$line->set_value_excl( $order->get_item_total( $item, false, false ) );
+				$line->set_units_price_excl( $order->get_item_total( $item, false, false ) );
 				$line->set_free_text_1( __( 'Fee', 'twinfield_woocommerce' ) );
 			}
 
@@ -126,7 +125,8 @@ class Pronamic_Twinfield_WooCommerce_Plugin {
 				$line->set_article( $twinfield_integration->get_shipping_method_article_code( $item['method_id'] ) );
 				$line->set_subarticle( $twinfield_integration->get_shipping_method_subarticle_code( $item['method_id'] ) );
 				$line->set_quantity( 1 );
-				$line->set_value_excl( $item['cost'] );
+				$line->set_units_price_excl( $item['cost'] );
+				$line->set_vat_code( $twinfield_integration->get_tax_class_vat_code( get_option( 'woocommerce_shipping_tax_class' ) ) );
 				$line->set_free_text_1( $item['name'] );
 			}
 		}
